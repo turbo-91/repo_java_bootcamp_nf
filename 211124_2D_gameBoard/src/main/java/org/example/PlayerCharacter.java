@@ -1,7 +1,7 @@
 package org.example;
 
 public class PlayerCharacter {
-//    public static String getX (int number) {
-//        return String.valueOf(number);
-//    }
+    public static int getX (int number) {
+        return 0;
+    }
 }
