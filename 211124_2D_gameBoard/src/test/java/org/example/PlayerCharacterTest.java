@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 public class PlayerCharacterTest {
     @Test
-    void expectPlayer_toBeOnField0(){
+    void expect_getX_toBe_0(){
         //GIVEN
         int number = 1;
         //WHEN
