@@ -25,4 +25,15 @@ public class PlayerCharacterTest {
         Assertions.assertEquals(expected, actualResult);
     }
 
+    @Test
+    void expect_move_toAdd_1toY(){
+        //GIVEN
+        String key = "W";
+        //WHEN
+        int actualResult = PlayerCharacter.move(key);
+        //THEN
+        int expected = 1;
+        Assertions.assertEquals(expected, actualResult);
+    }
+
 }

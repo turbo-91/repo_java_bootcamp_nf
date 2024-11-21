@@ -9,4 +9,8 @@ public class PlayerCharacter {
         return 0;
     }
 
+    public static int move (String key) {
+        return 1;
+    }
+
 }
