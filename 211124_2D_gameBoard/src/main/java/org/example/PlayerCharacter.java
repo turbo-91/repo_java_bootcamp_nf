@@ -25,7 +25,7 @@ public class PlayerCharacter {
         if (key.equals("A")) {
             return x - 1;
         }
-        else return 0;
+        else return 0; // why?
     };
 
 }
