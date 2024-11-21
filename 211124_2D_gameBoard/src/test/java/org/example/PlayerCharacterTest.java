@@ -14,4 +14,15 @@ public class PlayerCharacterTest {
         int expected = 0;
         Assertions.assertEquals(expected, actualResult);
     }
+@Test
+    void expect_getY_toBe_0(){
+        //GIVEN
+        int number = 1;
+        //WHEN
+        int actualResult = PlayerCharacter.getY(number);
+        //THEN
+        int expected = 0;
+        Assertions.assertEquals(expected, actualResult);
+    }
+
 }
