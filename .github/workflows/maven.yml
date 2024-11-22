@@ -2,19 +2,27 @@ name: Java CI with Maven
 
 on:
   push:
-    branches: [ "main" ]
-    jobs:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
+      # Step 1: Check out the repository
       - uses: actions/checkout@v4
+
+      # Step 2: Set up Java environment
       - uses: actions/setup-java@v4
         with:
-          java-version: "23"
-          distribution: "temurin"
-          cache: 'maven'
-      - run: mvn package --batch-mode
-  pull_request:
-    branches: [ "main" ]
+          java-version: "21" 
+          distribution: "temurin" # The JDK distribution
+          cache: "maven" # Caches dependencies
 
-
+      # Step 3: Build the project using Maven
+      - name: Build with Maven
+        run: mvn package --batch-mode
