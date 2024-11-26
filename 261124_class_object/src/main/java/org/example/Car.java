@@ -5,11 +5,13 @@ public class Car {
     String model;
     String color;
     Boolean started;
+    int speed;
 
-    public Car(String brand, String model, String color) {
+    public Car(String brand, String model, String color, Boolean started, int speed) {
         this.brand = brand;
         this.model = model;
         this.color = color;
-        this.started = true;
+        this.started = started;
+        this.speed = speed;
     }
 }

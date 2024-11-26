@@ -15,7 +15,7 @@ public class Main {
 
         Lamp lamp1 = new Lamp("IKEA", "brightWhite", true);
         Lamp lamp2 = new Lamp("Vintage", "warmWhite", false);
-        Car flitzer1 = new Car("Porsche", "Carrera", "hot pink");
+        Car flitzer1 = new Car("Porsche", "Carrera", "hot pink", true, 0);
 
         printLamp(lamp1);
         printLamp(lamp2);
@@ -34,7 +34,7 @@ public class Main {
     }
 
     public static void startCar(Car car){
-        System.out.println("This " + car.model + " of the brand " + car.brand + " in the color " + car.color + " is started now. Wroooom, wroom!");
+        System.out.println("This " + car.model + " of the brand " + car.brand + " in the color " + car.color + " has started, right? " + car.started + ".");
     }
 
 
