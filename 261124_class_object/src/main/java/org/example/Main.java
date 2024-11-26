@@ -16,10 +16,12 @@ public class Main {
         Lamp lamp1 = new Lamp("IKEA", "brightWhite", true);
         Lamp lamp2 = new Lamp("Vintage", "warmWhite", false);
         Car flitzer1 = new Car("Porsche", "Carrera", "hot pink", true, 0);
+        Car flitzer2 = new Car("Renault", "Twingo", "sonnengelb", true, 30);
 
         printLamp(lamp1);
         printLamp(lamp2);
         startCar(flitzer1);
+        accelerateCar(flitzer2);
 
     }
 
@@ -35,6 +37,10 @@ public class Main {
 
     public static void startCar(Car car){
         System.out.println("This " + car.model + " of the brand " + car.brand + " in the color " + car.color + " has started, right? " + car.started + ".");
+    }
+
+    public static void accelerateCar(Car car){
+        System.out.println("This " + car.model + " of the brand " + car.brand + " in the color " + car.color + " is at what Speed now? It is at: " + car.speed + ".");
     }
 
 
