@@ -52,7 +52,7 @@ public class Main {
 
 //    Coding: Classes and Objects
 
-    
+
 //    Create a class 'Car' together that represents the properties and methods of a car.
 //
 //    Step 1: Define the properties of a car, e.g. 'Brand', 'Model', 'Color', 'Year of Manufacture', etc.
