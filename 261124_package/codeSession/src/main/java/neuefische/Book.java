@@ -1,4 +1,4 @@
-package de.neuefische.car;
+package neuefische;
 
 public class Book {
     private String title;

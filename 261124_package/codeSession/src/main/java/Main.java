@@ -1,4 +1,4 @@
-package de.neuefische.car;
+import de.neuefische.car.Car;
 
 public class Main {
 	public static void main(String[] args) {
