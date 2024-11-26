@@ -6,12 +6,25 @@ public class Main {
         Book book = new Book("My best chess games", "Bobby Fischer", 150);
         Book book2 = new Book("My worst chess gamges","Martin Pagels", 1500);
 
+
         printBook(book);
         printBook(book2);
+
+
+        Lamp lamp1 = new Lamp("IKEA", "brightWhite", true);
+        Lamp lamp2 = new Lamp("Vintage", "warmWhite", false);
+
+        printLamp(lamp1);
+        printLamp(lamp2);
+
     }
 
     public static void printBook(Book book) {
         System.out.println("Das Buch hat den Titel: " + book.title + " Seitenlänge beträgt: " + book.pages + ". Und der Author ist: " + book.author);
+    }
+
+    public static void printLamp(Lamp lamp) {
+        System.out.println("LAMPE - Marke: " + lamp.brand + ", Lichtfarbe: " + lamp.colorLight + ", Eingeschaltet: " + lamp.turnedOn);
     }
 
     // CODE SESSION

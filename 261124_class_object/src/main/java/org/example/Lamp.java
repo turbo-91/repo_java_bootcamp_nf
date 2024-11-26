@@ -8,7 +8,7 @@ public class Lamp {
     public Lamp(String brand, String colorLight, Boolean turnedOn) {
         this.brand = brand;
         this.colorLight = colorLight;
-        this.turnedOn = true;
+        this.turnedOn = turnedOn;
     }
 }
 
