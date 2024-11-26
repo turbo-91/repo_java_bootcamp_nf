@@ -17,11 +17,17 @@ public class Main {
         Lamp lamp2 = new Lamp("Vintage", "warmWhite", false);
         Car flitzer1 = new Car("Porsche", "Carrera", "hot pink", true, 0);
         Car flitzer2 = new Car("Renault", "Twingo", "sonnengelb", true, 30);
+        Person anna = new Person("Momo", 34, "she/her", "change all my friends cars' oil");
+        Person willow = new Person("Willow", 62, "they/them", "to scream at my Grandmother's fine china");
+        Person robert = new Person("Robert", 47, "xe/xem", "rearrange the empty shampoo bottles on my shower shelf");
 
         printLamp(lamp1);
         printLamp(lamp2);
         startCar(flitzer1);
         accelerateCar(flitzer2);
+        introducePerson(anna);
+        introducePerson(willow);
+        introducePerson(wolfgang);
 
     }
 
@@ -41,6 +47,10 @@ public class Main {
 
     public static void accelerateCar(Car car){
         System.out.println("This " + car.model + " of the brand " + car.brand + " in the color " + car.color + " is at what Speed now? It is at: " + car.speed + ".");
+    }
+
+    public static void introducePerson(Person person){
+        System.out.println("Hello everyone, my name is " + person.name + " I am " + person.age + " years old, my pronouns are " + person.pronouns + " and in my free time I love to " + person.favoriteHobby +".");
     }
 
 
