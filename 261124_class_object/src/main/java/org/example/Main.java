@@ -8,26 +8,29 @@ public class Main {
         Book book2 = new Book("My worst chess gamges","Martin Pagels", 1500);
 
 
-        printBook(book);
-        printBook(book2);
+//        printBook(book);
+//        printBook(book2);
 
         //  CODE CHALLENGES
 
         Lamp lamp1 = new Lamp("IKEA", "brightWhite", true);
         Lamp lamp2 = new Lamp("Vintage", "warmWhite", false);
-        Car flitzer1 = new Car("Porsche", "Carrera", "hot pink", true, 0);
-        Car flitzer2 = new Car("Renault", "Twingo", "sonnengelb", true, 30);
+        Car flitzer1 = new Car("Porsche", "Carrera", "hot pink", true, 0, 200);
+        Car flitzer2 = new Car("Renault", "Twingo", "sonnengelb", false, 30, 50);
         Person anna = new Person("Momo", 34, "she/her", "change all my friends cars' oil");
         Person willow = new Person("Willow", 62, "they/them", "to scream at my Grandmother's fine china");
         Person robert = new Person("Robert", 47, "xe/xem", "rearrange the empty shampoo bottles on my shower shelf");
 
-        printLamp(lamp1);
-        printLamp(lamp2);
+//        printLamp(lamp1);
+//        printLamp(lamp2);
         startCar(flitzer1);
+        startCar(flitzer1);
+        startCar(flitzer2);
+        startCar(flitzer2);
         accelerateCar(flitzer2);
-        introducePerson(anna);
-        introducePerson(willow);
-        introducePerson(wolfgang);
+//        introducePerson(anna);
+//        introducePerson(willow);
+//        introducePerson(robert);
 
     }
 
@@ -42,12 +45,16 @@ public class Main {
     }
 
     public static void startCar(Car car){
-        System.out.println("This " + car.model + " of the brand " + car.brand + " in the color " + car.color + " has started, right? " + car.started + ".");
+        car.started = !car.started;
+        if (car.started) System.out.println( "My " + car.model + " goes WROOOM! WROOOOOOOOOOOM!!!!");
+        else System.out.println("Turn that fucking " + car.model + " on!");
     }
 
     public static void accelerateCar(Car car){
-        System.out.println("This " + car.model + " of the brand " + car.brand + " in the color " + car.color + " is at what Speed now? It is at: " + car.speed + ".");
-    }
+        if (car.started) {
+            System.out.println("The " + car.model + " is currently driving at " + car.speed + "km/h.");
+        }
+    else System.out.println("The " + car.model + " isn't even turned on, sweetie.");}
 
     public static void introducePerson(Person person){
         System.out.println("Hello everyone, my name is " + person.name + " I am " + person.age + " years old, my pronouns are " + person.pronouns + " and in my free time I love to " + person.favoriteHobby +".");
