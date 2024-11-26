@@ -3,6 +3,7 @@ package org.example;
 public class Main {
     public static void main(String[] args) {
 
+       // CODE SESSION
         Book book = new Book("My best chess games", "Bobby Fischer", 150);
         Book book2 = new Book("My worst chess gamges","Martin Pagels", 1500);
 
@@ -10,26 +11,33 @@ public class Main {
         printBook(book);
         printBook(book2);
 
+        //  CODE CHALLENGES
 
         Lamp lamp1 = new Lamp("IKEA", "brightWhite", true);
         Lamp lamp2 = new Lamp("Vintage", "warmWhite", false);
+        Car flitzer1 = new Car("Porsche", "Carrera", "hot pink");
 
         printLamp(lamp1);
         printLamp(lamp2);
+        startCar(flitzer1);
 
     }
 
+    // CODE SESSION
     public static void printBook(Book book) {
         System.out.println("Das Buch hat den Titel: " + book.title + " Seitenlänge beträgt: " + book.pages + ". Und der Author ist: " + book.author);
     }
 
+    //  CODE CHALLENGES
     public static void printLamp(Lamp lamp) {
         System.out.println("LAMPE - Marke: " + lamp.brand + ", Lichtfarbe: " + lamp.colorLight + ", Eingeschaltet: " + lamp.turnedOn);
     }
 
-    // CODE SESSION
+    public static void startCar(Car car){
+        System.out.println("This " + car.model + " of the brand " + car.brand + " in the color " + car.color + " is started now. Wroooom, wroom!");
+    }
 
-    // CHALLENGES
+
 
 //    Research
 
