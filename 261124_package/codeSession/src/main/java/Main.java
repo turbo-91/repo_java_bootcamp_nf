@@ -4,18 +4,22 @@ import de.neuefische.car.Car;
 
 public class Main {
 	public static void main(String[] args) {
-		Car bmw = new Car("BMW", "M3", 431, 1);
-		Car bmw2 = new Car("BMW", "M3", 431, 1);
-		System.out.println(bmw.equals(bmw2));
-		System.out.println(bmw == bmw2);
-		System.out.println(bmw.getId());
-		System.out.println(bmw.getBrand());
-		bmw.setHorsePower(10);
-		bmw.setBrand("VW");
-		System.out.println(bmw.getBrand());
-		System.out.println(bmw);
+
+		// CODE SESSION
+
+//		Car bmw = new Car("BMW", "M3", 431, 1);
+//		Car bmw2 = new Car("BMW", "M3", 431, 1);
+//		System.out.println(bmw.equals(bmw2));
+//		System.out.println(bmw == bmw2);
+//		System.out.println(bmw.getId());
+//		System.out.println(bmw.getBrand());
+//		bmw.setHorsePower(10);
+//		bmw.setBrand("VW");
+//		System.out.println(bmw.getBrand());
+//		System.out.println(bmw);
 
 		// CHALLENGES
+		// 1st coding challenge
 
 		Book circe = new Book("Circe", "Madeline Miller", "978-0-316-42388-5");
 		Book adulthoodRites = new Book("Adulthood Rites", "Octavia E. Butler", "978-0-316-42388-5");
@@ -23,8 +27,42 @@ public class Main {
 
 		Book[] torbensBooks = {circe, adulthoodRites, theFifthSeason};
 		Library torbensFaves = new Library(torbensBooks);
+//		System.out.println("approach 1" + torbensFaves);
+//
+//		System.out.println("approach 2: ");
+//		for (Book book: torbensFaves.getBooks()){
+//			System.out.println(book.getAuthor());
+//			System.out.println(book.getTitle());
+//			System.out.println(book.getIsbn());
+//		}
 
-		System.out.println(torbensFaves);
+		// bonus coding challenge
+
+		Book[] initialBooks = {circe, adulthoodRites};
+		Library library = new Library(initialBooks);
+
+		System.out.println("Initial Library:");
+		System.out.println(library);
+
+		// Add a new book
+		library.addBook(theFifthSeason);
+
+		System.out.println("After Adding a Book:");
+		System.out.println(library);
+
+		// Try adding a duplicate book
+		library.addBook(circe);
+
+		// Remove a book
+		library.deleteBook(adulthoodRites);
+
+		System.out.println("After Removing a Book:");
+		System.out.println(library);
+
+		// Try removing a book that doesn't exist
+		library.deleteBook(adulthoodRites);
+
+
 	}
 
 
