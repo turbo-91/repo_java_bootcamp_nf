@@ -10,6 +10,8 @@ class Car extends Vehicle {
         this.amountOfDoors = amountOfDoors;
     }
 
+
+
     public int getAmountOfDoors() {
         return amountOfDoors;
     }

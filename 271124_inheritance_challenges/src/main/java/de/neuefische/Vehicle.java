@@ -13,6 +13,10 @@ public class Vehicle {
         this.year = year;
     }
 
+    public void getVehicleInformation() {
+        System.out.println("Manufacturer: " + manufacturer + " Model: " + model);
+    }
+
     public String getManufacturer() {
         return manufacturer;
     }
