@@ -11,19 +11,25 @@ public class Main {
 //		System.out.println(Utility.PI);
 //		System.out.println(Car.calculateSum(10, 10));
 
-		Counter obj1 = new Counter();
-		Counter obj2 = new Counter();
+//		Counter obj1 = new Counter();
+//		Counter obj2 = new Counter();
+//
+//		Counter.incrementTotalCount();
+//
+//		obj1.incrementInstanceCount();
+//		obj2.incrementInstanceCount();
+//		obj2.incrementInstanceCount();
+//		obj2.incrementInstanceCount();
+//
+//		System.out.println("Total count (static): " + Counter.totalCount);
+//		System.out.println("Instance count for obj1: " + obj1.instanceCount);
+//		System.out.println("Instance count for obj2: " + obj2.instanceCount);
 
-		Counter.incrementTotalCount();
+		int a = 23;
+		int b = 17;
+		int sum = Calculator.add(a, b);
+		System.out.println(sum);
 
-		obj1.incrementInstanceCount();
-		obj2.incrementInstanceCount();
-		obj2.incrementInstanceCount();
-		obj2.incrementInstanceCount();
-
-		System.out.println("Total count (static): " + Counter.totalCount);
-		System.out.println("Instance count for obj1: " + obj1.instanceCount);
-		System.out.println("Instance count for obj2: " + obj2.instanceCount);
 
 	}
 	}
