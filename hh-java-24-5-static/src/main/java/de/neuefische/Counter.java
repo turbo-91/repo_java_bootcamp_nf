@@ -8,5 +8,7 @@ public class Counter {
         totalCount++;
     }
 
-   
+    public void incrementInstanceCount() {
+        instanceCount++;
+    }
 }
