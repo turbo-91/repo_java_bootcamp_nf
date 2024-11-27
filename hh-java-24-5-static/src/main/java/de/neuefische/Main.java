@@ -2,14 +2,14 @@ package de.neuefische;
 
 public class Main {
 	public static void main(String[] args) {
-		Car car1 = new Car("bmw");
-		Car car2 = new Car("vw");
-		Car car3 = new Car("ford");
-		Car car4 = new Car("skoda");
-
-		System.out.println(Car.getCarCounter());
-		System.out.println(Utility.PI);
-		System.out.println(Car.calculateSum(10, 10));
+//		Car car1 = new Car("bmw");
+//		Car car2 = new Car("vw");
+//		Car car3 = new Car("ford");
+//		Car car4 = new Car("skoda");
+//
+//		System.out.println(Car.getCarCounter());
+//		System.out.println(Utility.PI);
+//		System.out.println(Car.calculateSum(10, 10));
 
 		Counter obj1 = new Counter();
 		Counter obj2 = new Counter();
@@ -18,12 +18,16 @@ public class Main {
 
 		obj1.incrementInstanceCount();
 		obj2.incrementInstanceCount();
+		obj2.incrementInstanceCount();
+		obj2.incrementInstanceCount();
+
+		System.out.println("Total count (static): " + Counter.totalCount);
+		System.out.println("Instance count for obj1: " + obj1.instanceCount);
+		System.out.println("Instance count for obj2: " + obj2.instanceCount);
+
+	}
 	}
 
-
-
-	}
-}
 
 // RESEARCH
 

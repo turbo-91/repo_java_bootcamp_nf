@@ -11,4 +11,11 @@ public class Counter {
     public void incrementInstanceCount() {
         instanceCount++;
     }
+
+    @Override
+    public String toString() {
+        return "Counter{" +
+                "instanceCount=" + instanceCount +
+                '}';
+    }
 }
