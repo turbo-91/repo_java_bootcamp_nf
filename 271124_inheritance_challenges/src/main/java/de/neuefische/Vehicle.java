@@ -3,58 +3,58 @@ package de.neuefische;
 import java.util.Objects;
 
 public class Vehicle {
-    private String Manufacturer;
-    private String Model;
-    private String Year;
+    private String manufacturer;
+    private String model;
+    private String year;
 
-    public Vehicle(String Manufacturer, String Model, String Year) {
-        this.Manufacturer = Manufacturer;
-        this.Model = Model;
-        this.Year = Year;
+    public Vehicle(String manufacturer, String model, String year) {
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.year = year;
     }
 
     public String getManufacturer() {
-        return Manufacturer;
+        return manufacturer;
     }
 
     public void setManufacturer(String manufacturer) {
-        Manufacturer = manufacturer;
+        this.manufacturer = manufacturer;
     }
 
     public String getModel() {
-        return Model;
+        return model;
     }
 
     public void setModel(String model) {
-        Model = model;
+        this.model = model;
     }
 
     public String getYear() {
-        return Year;
+        return year;
     }
 
     public void setYear(String year) {
-        Year = year;
+        this.year = year;
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Vehicle vehicle = (Vehicle) o;
-        return Objects.equals(Manufacturer, vehicle.Manufacturer) && Objects.equals(Model, vehicle.Model) && Objects.equals(Year, vehicle.Year);
+        return Objects.equals(manufacturer, vehicle.manufacturer) && Objects.equals(model, vehicle.model) && Objects.equals(year, vehicle.year);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(Manufacturer, Model, Year);
+        return Objects.hash(manufacturer, model, year);
     }
 
     @Override
     public String toString() {
         return "Vehicle{" +
-                "Manufacturer='" + Manufacturer + '\'' +
-                ", Model='" + Model + '\'' +
-                ", Year='" + Year + '\'' +
+                "manufacturer='" + manufacturer + '\'' +
+                ", model='" + model + '\'' +
+                ", year='" + year + '\'' +
                 '}';
     }
 }
