@@ -10,7 +10,11 @@ class Car extends Vehicle {
         this.amountOfDoors = amountOfDoors;
     }
 
-
+    @Override
+    public void getVehicleInformation() {
+        super.getVehicleInformation(); 
+        System.out.println("Number of Doors: " + amountOfDoors);
+    }
 
     public int getAmountOfDoors() {
         return amountOfDoors;
