@@ -10,6 +10,18 @@ public class Main {
 		System.out.println(Car.getCarCounter());
 		System.out.println(Utility.PI);
 		System.out.println(Car.calculateSum(10, 10));
+
+		Counter obj1 = new Counter();
+		Counter obj2 = new Counter();
+
+		Counter.incrementTotalCount();
+
+		obj1.incrementInstanceCount();
+		obj2.incrementInstanceCount();
+	}
+
+
+
 	}
 }
 
