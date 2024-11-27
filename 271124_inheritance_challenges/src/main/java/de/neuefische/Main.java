@@ -2,7 +2,14 @@ package de.neuefische;
 
 public class Main {
 	public static void main(String[] args) {
-		System.out.println("konichiwa");
+		Vehicle polo = new Vehicle("VW", "Polo", "2014");
+		Car golf = new Car("VW", "Golf", "2015");
+
+		System.out.println("Vehicle Information:");
+		polo.getVehicleInformation();
+
+		System.out.println("\nCar Information:");
+		golf.getVehicleInformation();
 	}
 }
 
