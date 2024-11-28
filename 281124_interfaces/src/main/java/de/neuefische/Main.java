@@ -1,6 +1,8 @@
 package de.neuefische;
 
 import de.neuefische.noisyMusic.*;
+import de.neuefische.player.MusicPlayer;
+import de.neuefische.player.VideoPlayer;
 
 public class Main {
     public static void main(String[] args) {
@@ -15,11 +17,9 @@ public class Main {
         recordNoise(violin);
         recordNoise(screwdriver);
         recordNoise(rocket);
+    }
 
 // CHALLENGES
-
-
-    }
 
 // SESSION
 

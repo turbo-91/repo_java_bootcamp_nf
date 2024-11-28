@@ -1,12 +1,7 @@
 package de.neuefische.player;
 
-public class MediaController implements Playable {
-    @Override
-    public void play() {
-
-    }
-
+public class MediaController {
     public void playMedia(Playable playable) {
-        play();
+        playable.play();
     }
 }
