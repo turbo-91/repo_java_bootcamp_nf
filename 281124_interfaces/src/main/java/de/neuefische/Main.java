@@ -21,6 +21,10 @@ public class Main {
 
 // CHALLENGES
 
+    MusicPlayer houseMusic = new MusicPlayer();
+    VideoPlayer starTrekEpisode = new VideoPlayer();
+
+
 // SESSION
 
     private static void recordNoise(CanMakeNoise device) {
