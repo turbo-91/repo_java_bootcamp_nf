@@ -1,6 +1,7 @@
 package de.neuefische;
 
 import de.neuefische.noisyMusic.*;
+import de.neuefische.player.MediaController;
 import de.neuefische.player.MusicPlayer;
 import de.neuefische.player.VideoPlayer;
 
@@ -8,21 +9,27 @@ public class Main {
     public static void main(String[] args) {
 
 // SESSION
-        Instrument violin = new Violin();
-        Instrument eGitarre = new EGitarre();
-
-        Screwdriver screwdriver = new Screwdriver();
-        Rocket rocket = new Rocket();
-
-        recordNoise(violin);
-        recordNoise(screwdriver);
-        recordNoise(rocket);
-    }
+//        Instrument violin = new Violin();
+//        Instrument eGitarre = new EGitarre();
+//
+//        Screwdriver screwdriver = new Screwdriver();
+//        Rocket rocket = new Rocket();
+//
+//        recordNoise(violin);
+//        recordNoise(screwdriver);
+//        recordNoise(rocket);
 
 // CHALLENGES
 
-    MusicPlayer houseMusic = new MusicPlayer();
-    VideoPlayer starTrekEpisode = new VideoPlayer();
+        MusicPlayer houseMusic = new MusicPlayer();
+        VideoPlayer starTrekEpisode = new VideoPlayer();
+
+        MediaController mediaController = new MediaController();
+
+        System.out.println(mediaController.playMedia(houseMusic));
+        System.out.println(mediaController.playMedia(starTrekEpisode));
+
+    }
 
 
 // SESSION
