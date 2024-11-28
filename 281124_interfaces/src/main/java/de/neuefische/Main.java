@@ -1,5 +1,7 @@
 package de.neuefische;
 
+import de.neuefische.noisyMusic.*;
+
 public class Main {
     public static void main(String[] args) {
 

@@ -1,6 +1,6 @@
-package de.neuefische;
+package de.neuefische.noisyMusic;
 
-public class Rocket implements CanMakeNoise{
+public class Rocket implements CanMakeNoise {
 
     public String makeNoise() {
         return "Some rocket noise";
