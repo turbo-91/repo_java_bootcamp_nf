@@ -1,4 +1,4 @@
-package de.neuefische;
+package de.neuefische.noisyMusic;
 
 public class Screwdriver implements CanMakeNoise {
 

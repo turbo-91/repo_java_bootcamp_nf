@@ -1,4 +1,4 @@
-package de.neuefische;
+package de.neuefische.noisyMusic;
 
 public class Instrument implements CanMakeNoise, CanRunning {
     public String makeNoise() {

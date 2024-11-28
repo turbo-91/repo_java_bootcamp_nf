@@ -1,27 +1,49 @@
 package de.neuefische;
 
+import de.neuefische.noisyMusic.*;
+import de.neuefische.player.MediaController;
+import de.neuefische.player.MusicPlayer;
+import de.neuefische.player.VideoPlayer;
+
 public class Main {
     public static void main(String[] args) {
 
+// SESSION
+//        Instrument violin = new Violin();
+//        Instrument eGitarre = new EGitarre();
+//
+//        Screwdriver screwdriver = new Screwdriver();
+//        Rocket rocket = new Rocket();
+//
+//        recordNoise(violin);
+//        recordNoise(screwdriver);
+//        recordNoise(rocket);
 
-        Instrument violin = new Violin();
-        Instrument eGitarre = new EGitarre();
+// CHALLENGES
 
-        Screwdriver screwdriver = new Screwdriver();
-        Rocket rocket = new Rocket();
+        MusicPlayer houseMusic = new MusicPlayer();
+        VideoPlayer starTrekEpisode = new VideoPlayer();
 
-        recordNoise(violin);
-        recordNoise(screwdriver);
-        recordNoise(rocket);
+        MediaController mediaController = new MediaController();
 
+        System.out.println(mediaController.playMedia(houseMusic));
+        System.out.println(mediaController.playMedia(starTrekEpisode));
 
     }
+
+
+// SESSION
 
     private static void recordNoise(CanMakeNoise device) {
         System.out.println("Start recording....");
         System.out.println("Recording: " + device.makeNoise());
         System.out.println("Stop recording...");
     }
+
+// CHALLENGE
+
+
+
 }
 
 // RESEARCH
