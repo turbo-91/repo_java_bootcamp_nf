@@ -3,7 +3,7 @@ package de.neuefische;
 public class Main {
     public static void main(String[] args) {
 
-
+// SESSION
         Instrument violin = new Violin();
         Instrument eGitarre = new EGitarre();
 
@@ -14,14 +14,23 @@ public class Main {
         recordNoise(screwdriver);
         recordNoise(rocket);
 
+// CHALLENGES
+
 
     }
+
+// SESSION
 
     private static void recordNoise(CanMakeNoise device) {
         System.out.println("Start recording....");
         System.out.println("Recording: " + device.makeNoise());
         System.out.println("Stop recording...");
     }
+
+// CHALLENGE
+
+
+
 }
 
 // RESEARCH
