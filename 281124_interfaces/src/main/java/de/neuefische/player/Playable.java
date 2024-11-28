@@ -1,5 +1,5 @@
 package de.neuefische.player;
 
-public class Playable {
-    public static void play(){};
+public interface Playable {
+    void play();
 }
