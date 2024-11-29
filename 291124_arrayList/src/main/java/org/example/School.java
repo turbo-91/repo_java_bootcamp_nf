@@ -11,5 +11,13 @@ public class School {
 
     public void addStudent(Student student) {
         students.add(student);
+        System.out.println("Student added: " + student);
     }
+
+    public void printAllStudents() {
+            System.out.println("List of students:");
+            for (Student student : students) {
+                System.out.println(student);
+            }
+        }
 }
