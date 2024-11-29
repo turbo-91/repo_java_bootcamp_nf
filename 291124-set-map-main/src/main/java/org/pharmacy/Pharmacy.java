@@ -27,4 +27,16 @@ public class Pharmacy {
             System.out.println("Medication deleted: " + medicationName);
     }
 
+    public void printAllMedications() {
+        if (medications.isEmpty()) {
+            System.out.println("No medications in the pharmacy.");
+        } else {
+            System.out.println("Medications in the pharmacy:");
+            for (Medication medication : medications.values()) {
+                System.out.println("Name: " + medication.getName() +
+                        ", Price: $" + medication.getPrice() +
+                        ", Availability: " + (medication.getAvailability() ? "In Stock" : "Out of Stock"));
+            }
+        }
+    }
 }
