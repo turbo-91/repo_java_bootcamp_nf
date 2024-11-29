@@ -18,4 +18,8 @@ public class Pharmacy {
         System.out.println("Medication saved: " + medication.getName());
     }
 
+    public Medication find(String medicationName) {
+        return medications.getOrDefault(medicationName, null);
+    }gt
+
 }
