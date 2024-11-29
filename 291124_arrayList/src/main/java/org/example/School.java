@@ -1,9 +1,10 @@
 package org.example;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class School {
-    private List<Student> students;
+private List<Student> students;
 
     public School() {
         this.students = new ArrayList<>();
@@ -35,9 +36,8 @@ public class School {
         if (studentToRemove != null) {
             students.remove(studentToRemove);
             return true;
-        } else { 
+        } else {
             return false;
         }
     }
-
 }
