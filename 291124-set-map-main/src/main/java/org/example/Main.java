@@ -61,7 +61,7 @@ public class Main {
 // its key, such as retrieving a user’s name by their ID. For example, using a HashMap<Integer, String> can map user IDs to names, ensuring fast lookups.
 
 
-// Name another class in the Java Collections Framework, besides ArrayList, HashSet, and HashMap. 
+// Name another class in the Java Collections Framework, besides ArrayList, HashSet, and HashMap.
 //
 // Another class in the Java Collections Framework is the LinkedList. It is a doubly-linked list implementation that allows efficient insertion and deletion
 // of elements at both ends, making it suitable for use cases like implementing queues or stacks.
