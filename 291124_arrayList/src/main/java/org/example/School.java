@@ -24,10 +24,20 @@ public class School {
     public Student findStudentById(int studentId) {
         for (Student student : students) {
             if (student.getStudentId() == studentId) {
-                return student; // Return the found student
+                return student;
             }
         }
         return null;
+    }
+
+    public boolean removeStudentById(int studentId) {
+        Student studentToRemove = findStudentById(studentId);
+        if (studentToRemove != null) {
+            students.remove(studentToRemove);
+            return true;
+        } else { 
+            return false;
+        }
     }
 
 }
