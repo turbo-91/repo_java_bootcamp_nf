@@ -16,5 +16,13 @@ public class Main {
         school.addStudent(new Student("Eva", "Mustermann", 105));
         school.addStudent(new Student("Momo", "Mustermann", 106));
         school.printAllStudents();
+
+        Student foundStudent = school.findStudentById(102);
+        if (foundStudent != null) {
+            System.out.println("Here is your student: " + foundStudent);
+        } else {
+            System.out.println("No student found with matching ID.");
+        }
+
     }
 }
