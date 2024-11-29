@@ -12,4 +12,10 @@ public class Pharmacy {
     public int getCount() {
         return medications.size();
     }
+
+    public void save(Medication medication) {
+        medications.put(medication.getName(), medication);
+        System.out.println("Medication saved: " + medication.getName());
+    }
+
 }
