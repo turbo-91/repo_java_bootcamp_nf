@@ -20,6 +20,11 @@ public class Pharmacy {
 
     public Medication find(String medicationName) {
         return medications.getOrDefault(medicationName, null);
-    }gt
+    }
+
+    public void delete(String medicationName) {
+            medications.remove(medicationName);
+            System.out.println("Medication deleted: " + medicationName);
+    }
 
 }
