@@ -8,4 +8,8 @@ public class Pharmacy {
     public Pharmacy() {
         this.medications = new HashMap<>();
     }
+
+    public int getCount() {
+        return medications.size();
+    }
 }
