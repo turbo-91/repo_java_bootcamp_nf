@@ -10,7 +10,6 @@ public record BookRecord(
     public BookRecord withTitle(String title) {
         return new BookRecord(ISBN, title, price);
     }
-
     public BookRecord withISBN(String ISBN) {
         return new BookRecord(ISBN, title, price);
     }
