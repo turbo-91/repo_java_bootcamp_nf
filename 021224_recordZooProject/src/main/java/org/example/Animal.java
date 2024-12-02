@@ -1,6 +1,6 @@
 package org.example;
 
-public record Animal(String ID, String name, String species, int age, Owner owner) {
+public record Animal(String ID, String name, Species species, int age, Owner owner) {
 
     public Animal withID(String ID) {
         return new Animal(ID, name, species, age, owner);
@@ -10,7 +10,7 @@ public record Animal(String ID, String name, String species, int age, Owner owne
         return new Animal(ID, name, species, age, owner);
     }
 
-    public Animal withSpecies(String species) {
+    public Animal withSpecies(Species species) {
         return new Animal(ID, name, species, age, owner);
     }
 
