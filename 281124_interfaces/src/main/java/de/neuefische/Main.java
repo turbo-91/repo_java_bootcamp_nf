@@ -34,11 +34,11 @@ public class Main {
 
 // SESSION
 
-    private static void recordNoise(CanMakeNoise device) {
-        System.out.println("Start recording....");
-        System.out.println("Recording: " + device.makeNoise());
-        System.out.println("Stop recording...");
-    }
+//    private static void recordNoise(CanMakeNoise device) {
+//        System.out.println("Start recording....");
+//        System.out.println("Recording: " + device.makeNoise());
+//        System.out.println("Stop recording...");
+//    }
 
 // CHALLENGE
 
