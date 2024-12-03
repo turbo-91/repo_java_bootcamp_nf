@@ -1,8 +1,38 @@
 package org.example;
 
+import java.util.List;
+
+import static org.example.PalindromeChecker.isPalindrome;
+import static org.example.PrimeGenerator.generatePrimes;
+import static org.example.StringReverser.reverseString;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+        // String reverse
+
+        String original = "Hello, World!";
+        String reversed = reverseString(original);
+        System.out.println("Original: " + original);
+        System.out.println("Reversed: " + reversed);
+
+        // Palindrome
+
+        String test1 = "anna";
+        String test2 = "hello";
+        String test3 = "racecar";
+        String test4 = null;
+
+        System.out.println("Is 'anna' a palindrome? " + isPalindrome(test1));
+        System.out.println("Is 'hello' a palindrome? " + isPalindrome(test2));
+        System.out.println("Is 'racecar' a palindrome? " + isPalindrome(test3));
+        System.out.println("Is null a palindrome? " + isPalindrome(test4));
+
+        // Prime Generator
+
+        int n = 10; // Example: Generate the first 10 prime numbers
+        List<Integer> primes = generatePrimes(n);
+        System.out.println("The first " + n + " prime numbers are: " + primes);
     }
 }
 
