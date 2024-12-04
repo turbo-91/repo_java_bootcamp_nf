@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.List;
 import java.util.Optional;
 
 public class Main {
@@ -18,23 +19,31 @@ public class Main {
 
         // CHALLENGES
 
-        Person ed = new Person(1, "Ed", DaysOfWeek.MONDAY);
-        Person edie = new Person(2, "Edie", DaysOfWeek.THURSDAY);
+        Person ed = new Person(1, "Ed", DaysOfWeek.MONDAY, Gender.FEMALE);
+        Person edie = new Person(2, "Edie", DaysOfWeek.THURSDAY, Gender.GENDER_NON_CONFORMING);
+        Person john = new Person(3, "John", DaysOfWeek.WEDNESDAY, Gender.MALE);
+        Person jane = new Person(4, "Jane", DaysOfWeek.FRIDAY, Gender.FEMALE);
+        Person alex = new Person(5, "Alex", DaysOfWeek.SATURDAY, Gender.GENDER_NON_CONFORMING);
 
+        // Person repository
         PersonRepository personRepository = new PersonRepository();
         personRepository.addPerson(ed);
         personRepository.addPerson(edie);
+        personRepository.addPerson(john);
+        personRepository.addPerson(jane);
+        personRepository.addPerson(alex);
 
+        // Check if the person with ID 1 exists
         Optional<Person> optionalPerson1 = personRepository.getPersonById(1);
 
         if (optionalPerson1.isPresent()) {
             Person person = optionalPerson1.get();
-            System.out.println(person.name() + " is happy it is a " + person.favoriteDay());
+            System.out.println(person.name() + " who is " + person.gender() + " is happy it is a " + person.favoriteDay());
         } else {
             System.out.println("Person not found");
         }
 
-        // Check if the person with ID 3 exists (not added to repository)
+        // Check if the person with ID 3 exists
         Optional<Person> optionalPerson3 = personRepository.getPersonById(3);
 
         if (optionalPerson3.isPresent()) {
@@ -43,11 +52,56 @@ public class Main {
         } else {
             System.out.println("Person not found");
         }
+
+        // Check if the person with ID 5 exists
+        Optional<Person> optionalPerson5 = personRepository.getPersonById(5);
+
+        if (optionalPerson5.isPresent()) {
+            Person person = optionalPerson5.get();
+            System.out.println(person.name() + " is happy it is a " + person.favoriteDay());
+        } else {
+            System.out.println("Person not found");
+        }
+
+        // Check if the person with ID 6 exists (not added to repository)
+        Optional<Person> optionalPerson6 = personRepository.getPersonById(6);
+
+        if (optionalPerson6.isPresent()) {
+            Person person = optionalPerson6.get();
+            System.out.println(person.name() + " is happy it is a " + person.favoriteDay());
+        } else {
+            System.out.println("Person not found");
+        }
+
+        // Check if amountPeopleByGender works
+        System.out.println(personRepository.amountPeopleByGender(Gender.FEMALE) + " people are female.");
+
+        // check if getPersonByName works
+        Optional<Person> optionalPerson2 = personRepository.getPersonByName("Edie");
+
+        if (optionalPerson2.isPresent()) {
+            Person person = optionalPerson2.get();
+            System.out.println(person.name() + " is here to slay.");
+        } else {
+            System.out.println("Person not found");
+        }
+
+        Optional<Person> optionalPerson11 = personRepository.getPersonByName("Torben");
+
+        if (optionalPerson11.isPresent()) {
+            Person person = optionalPerson11.get();
+            System.out.println(person.name() + " is here to slay.");
+        } else {
+            System.out.println("Person not found");
+        }
+
+        // check if getAllPersonsByFavoriteWeekday works
+        List<Person> mondayLovers = personRepository.getAllPersonsByFavoriteWeekday(DaysOfWeek.MONDAY);
+        System.out.println("People who love Monday: ");
+        System.out.println(mondayLovers);
+
     }
-
-
-
-    }
+}
 
 
 // RESEARCH
