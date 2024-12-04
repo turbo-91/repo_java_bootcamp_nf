@@ -14,6 +14,13 @@ public class Main {
 
         // OPTIONAL
 
+        // CHALLENGES
+
+        // Test each day
+        for (DaysOfWeek day : DaysOfWeek.values()) {
+            System.out.println(day + " is a " + day.whatKindaDay());
+        }
+
     }
 }
 
