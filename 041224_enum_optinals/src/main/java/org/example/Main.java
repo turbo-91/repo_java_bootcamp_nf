@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.Optional;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -16,13 +18,37 @@ public class Main {
 
         // CHALLENGES
 
-        // Test each day
-        for (DaysOfWeek day : DaysOfWeek.values()) {
-            System.out.println(day + " is a " + day.whatKindaDay());
+        Person ed = new Person(1, "Ed", DaysOfWeek.MONDAY);
+        Person edie = new Person(2, "Edie", DaysOfWeek.THURSDAY);
+
+        PersonRepository personRepository = new PersonRepository();
+        personRepository.addPerson(ed);
+        personRepository.addPerson(edie);
+
+        Optional<Person> optionalPerson1 = personRepository.getPersonById(1);
+
+        if (optionalPerson1.isPresent()) {
+            Person person = optionalPerson1.get();
+            System.out.println(person.name() + " is happy it is a " + person.favoriteDay());
+        } else {
+            System.out.println("Person not found");
         }
 
+        // Check if the person with ID 3 exists (not added to repository)
+        Optional<Person> optionalPerson3 = personRepository.getPersonById(3);
+
+        if (optionalPerson3.isPresent()) {
+            Person person = optionalPerson3.get();
+            System.out.println(person.name() + " is happy it is a " + person.favoriteDay());
+        } else {
+            System.out.println("Person not found");
+        }
     }
-}
+
+
+
+    }
+
 
 // RESEARCH
 

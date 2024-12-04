@@ -2,33 +2,22 @@ package org.example;
 
 public enum DaysOfWeek {
 
-    MONDAY ("Weekday", true),
-    TUESDAY ("Weekday", true),
-    WEDNESDAY ("Weekday", true),
-    THURSDAY ("Weekday", true),
-    FRIDAY ("Weekday", true),
-    SATURDAY ("Weekend", false),
-    SUNDAY ("Weekend", false);
+    MONDAY(true),
+    TUESDAY(true),
+    WEDNESDAY(true),
+    THURSDAY(true),
+    FRIDAY(true),
+    SATURDAY(false),
+    SUNDAY(false);
 
-    private final String weekDay;
     private final boolean isWeekday;
 
-
-    DaysOfWeek(String weekDay, boolean isWeekday) {
-        this.weekDay = weekDay;
+    DaysOfWeek(boolean isWeekday) {
         this.isWeekday = isWeekday;
     }
 
-    @Override
-    public String toString() {
-        return this.name();
-    }
-
-    public String whatKindaDay(){
-        if (this.isWeekday){
-            return this.toString();
-        }
-        return this.weekDay;
+    public String whatKindaDay() {
+        return isWeekday ? this.name() : "Weekend";
     }
 
 }
