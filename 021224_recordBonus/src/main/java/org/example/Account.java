@@ -65,4 +65,10 @@ private Client client;
         return newBalance;
     };
 
+    public BigDecimal withdrawMoney(BigDecimal amount, BigDecimal balance) {
+        BigDecimal newBalance = balance.subtract(amount);
+        setBalance(newBalance);
+        return newBalance;
+    };
+
 }
