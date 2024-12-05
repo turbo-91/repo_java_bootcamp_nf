@@ -23,6 +23,14 @@ public class Main {
         System.out.println( testAccount2.getClient().FirstName() + "'s balance after withdrawal:");
         System.out.println( testAccount2.getBalance());
 
+        BankService bankService = new BankService();
+        Client testClient3 = new Client("Karin", "Jost", 789);
+        System.out.println("accounts before Open Account method: ");
+        System.out.println(bankService.accounts);
+        bankService.openAccount(testClient3);
+        System.out.println("accounts after Open Account method: ");
+        System.out.println(bankService.accounts);
+
 
     }
 }
