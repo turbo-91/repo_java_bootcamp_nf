@@ -23,6 +23,8 @@ public class Main {
         System.out.println( testAccount2.getClient().FirstName() + "'s balance after withdrawal:");
         System.out.println( testAccount2.getBalance());
 
+        System.out.println("------------------------------------------");
+
         BankService bankService = new BankService();
         Client testClient3 = new Client("Karin", "Jost", 789);
         System.out.println("accounts before Open Account method: ");
@@ -30,6 +32,21 @@ public class Main {
         bankService.openAccount(testClient3);
         System.out.println("accounts after Open Account method: ");
         System.out.println(bankService.accounts);
+
+        System.out.println("------------------------------------------");
+
+        bankService.accounts.add(testAccount1);
+        bankService.accounts.add(testAccount2);
+        System.out.println("account sender balance before transfer: ");
+        System.out.println(testAccount1.getBalance());
+        System.out.println("account receiver balance before transfer: ");
+        System.out.println(testAccount2.getBalance());
+        bankService.transferMoney(new BigDecimal("10.00"), testAccount1.getAccountNumber(), testAccount2.getAccountNumber());
+        System.out.println("account sender balance after transfer: ");
+        System.out.println(testAccount1.getBalance());
+        System.out.println("account receiver balance after transfer: ");
+        System.out.println(testAccount2.getBalance());
+
 
 
     }

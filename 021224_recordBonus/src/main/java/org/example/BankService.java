@@ -51,4 +51,21 @@ public class BankService {
        Account newAccount = new Account(newNumber, new BigDecimal("0.0"), client);
        accounts.add(newAccount);
     }
+
+    public Account getAccountByAccountNumber(String accountNumber) {
+        for (Account account : accounts) {
+            if (account.getAccountNumber().equals(accountNumber)) return account;
+        }
+        return null;
+    }
+
+    public void transferMoney(BigDecimal amount, String accountNumberSender, String accountNumberReceiver) {
+        Account accountSender = getAccountByAccountNumber(accountNumberSender);
+        Account accountReceiver = getAccountByAccountNumber(accountNumberReceiver);
+        BigDecimal newBalanceSender = accountSender.getBalance().subtract(amount);
+        BigDecimal newBalanceReceiver = accountReceiver.getBalance().add(amount);
+        accountSender.setBalance(newBalanceSender);
+        accountReceiver.setBalance(newBalanceReceiver);
+    }
+
 }
