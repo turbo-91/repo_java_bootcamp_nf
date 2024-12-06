@@ -22,16 +22,15 @@ public class StudentRepoTest {
     }
 
     @Test
-    public void testFindStudentByIdNotFound() {
+    public void testFindStudentByIdNotFound() throws InstanceNotFoundException {
         // GIVEN
         StudentRepo repo = new StudentRepo();
+        Student student = new Student("123", "Alice", "Math");
+        repo.save(student);
 
-        // WHEN
-        // We try to find a student with a non-existent ID
-
-        // THEN: An InstanceNotFoundException is thrown
+        // WHEN & THEN
         assertThrows(InstanceNotFoundException.class, () -> {
-            repo.findStudentById("non-existent-id");
+            repo.findStudentById("Käsekuchen");
         });
     }
 
