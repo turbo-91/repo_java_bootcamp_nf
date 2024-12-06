@@ -6,25 +6,65 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Student ninaF = new Student("1a", "Nina Fischer", "Hauptstr. 21", 3);
-        Student tomH = new Student("2b", "Tom Holland", "Schillerstr. 2", 4);
-        Student ellaI = new Student("3c", "Ella Immer", "Goethestr. 1", 1);
-        Student EgonW = new Student("4d", "Egon Wilder", "Kantstr. 11", 6);
+        Student ninaF = Student
+                .builder()
+                .id("1a")
+                .name("Nina Fischer")
+                .address("Hauptstr. 21")
+                .grade(3)
+                .build();
+        Student tomH = Student
+                .builder()
+                .id("2b")
+                .name("Tom Holland")
+                .address("Schillerstr. 2")
+                .grade(4)
+                .build();
+        Student ellaI = Student
+                .builder()
+                .id("3c")
+                .name("Ella Immer")
+                .address("Goethestr. 1")
+                .grade(1)
+                .build();
+        Student egonW = Student
+                .builder()
+                .id("4d")
+                .name("Egon Wilder")
+                .address("Kantstr. 11")
+                .grade(6)
+                .build();
 
-        Teacher frauLoch = new Teacher("5e", "Marlene Loch", "Deutsch");
-        Teacher herrKerwer = new Teacher("6f", "Günther Kerwer", "Mather");
+        Teacher frauLoch = Teacher
+                .builder()
+                .id("5e")
+                .name("Marlene Loch")
+                .subject("Deutsch")
+                .build();
+        Teacher herrKerwer = Teacher
+                .builder()
+                .id("6f")
+                .name("Günther Kerwer")
+                .subject("Mathematik")
+                .build();
 
         List<Student> students = new ArrayList<>();
         students.add(ninaF);
         students.add(tomH);
-        students.add(EgonW);
+        students.add(egonW);
 
-        Course deutschUnterricht = new Course("7g", "Deutsch", frauLoch, students);
+        Course matheUnterricht = Course
+                .builder()
+                .id("7g")
+                .name("Mathematik")
+                .teacher(herrKerwer)
+                .students(students)
+                .build();
 
         System.out.println("Ninas Adresse: " + ninaF.getAddress());
         ninaF.setAddress("Hegelstr. 21");
         System.out.println("Ninas Adresse nach set: " + ninaF.getAddress());
-        System.out.println("Is Nina's grade the same as Egon's? " + ninaF.getAddress().equals(EgonW.getGrade()));
+        System.out.println("Is Nina's grade the same as Egon's? " + ninaF.getAddress().equals(egonW.getGrade()));
         System.out.println("Was ist Ellas Passwort? Es lautet: " + ellaI.hashCode());
         System.out.println("Ich brauche alle Infos über Herr Kerwer, die wir haben! Na logo: " + herrKerwer.toString());
 
