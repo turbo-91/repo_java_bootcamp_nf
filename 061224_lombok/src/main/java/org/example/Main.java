@@ -68,6 +68,9 @@ public class Main {
         System.out.println("Is Nina's grade the same as Egon's? " + ninaF.getAddress().equals(egonW.getGrade()));
         System.out.println("Was ist Ellas Passwort? Es lautet: " + ellaI.hashCode());
         System.out.println("Ich brauche alle Infos über Herr Kerwer, die wir haben! Na logo: " + herrKerwer.toString());
+        Student egonWithWarning = egonW.withWarning("Wiederholtes Schnattern während des Unterrichts");
+        System.out.println("Egon, du ungezogenes Kind: " + egonWithWarning.getWarning());
+
 
 
 
