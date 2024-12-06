@@ -53,6 +53,7 @@ public class Main {
         students.add(tomH);
         students.add(egonW);
 
+        Course deutschUnterricht = new Course("7g", "Deutsch", frauLoch, students);
         Course matheUnterricht = Course
                 .builder()
                 .id("7g")
