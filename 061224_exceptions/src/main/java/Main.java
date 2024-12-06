@@ -1,6 +1,8 @@
+import javax.management.InstanceNotFoundException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InstanceNotFoundException {
         StudentService studentService = new StudentService();
 
         Student newStudent = Student.builder()
@@ -10,7 +12,25 @@ public class Main {
 
         Student savedStudent = studentService.addNewStudent(newStudent);
 
+        Student newStudent2 = Student.builder()
+                .name("Tobi")
+                .subject("Anthropologie")
+                .build();
+
+        Student newStudent3 = Student.builder()
+                .name("Anna")
+                .subject("Quantenphysik")
+                .build();
+
+        studentService.addNewStudent(newStudent2);
+        studentService.addNewStudent(newStudent3);
+
+        String florianId = savedStudent.id();
+
         System.out.println("Student saved: " + savedStudent);
+        System.out.println("Students: " + studentService.getAllStudents());
+        System.out.println("Florian: " + studentService.findStudentById(florianId));
+        System.out.println("Norian: " + studentService.findStudentById("Käsekuchen"));
     }
 }
 

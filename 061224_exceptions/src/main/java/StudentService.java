@@ -1,4 +1,6 @@
+import javax.management.InstanceNotFoundException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 public class StudentService {
@@ -12,5 +14,9 @@ public class StudentService {
 
     public List<Student> getAllStudents(){
         return repo.getAllStudents();
+    }
+
+    public Student findStudentById(String id) throws InstanceNotFoundException {
+        return repo.findStudentById(id);
     }
 }
