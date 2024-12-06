@@ -3,13 +3,14 @@ package org.example;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.List;
 import java.util.UUID;
 
 @Data
 @AllArgsConstructor
-public class Student {
+public class Course {
     String id;
     String name;
-    String address;
-    int grade;
+    Teacher teacher;
+    List<Student> students;
 }

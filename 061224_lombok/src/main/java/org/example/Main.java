@@ -1,7 +1,35 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+
+        Student ninaF = new Student("1a", "Nina Fischer", "Hauptstr. 21", 3);
+        Student tomH = new Student("2b", "Tom Holland", "Schillerstr. 2", 4);
+        Student ellaI = new Student("3c", "Ella Immer", "Goethestr. 1", 1);
+        Student EgonW = new Student("4d", "Egon Wilder", "Kantstr. 11", 6);
+
+        Teacher frauLoch = new Teacher("5e", "Marlene Loch", "Deutsch");
+        Teacher herrKerwer = new Teacher("6f", "Günther Kerwer", "Mather");
+
+        List<Student> students = new ArrayList<>();
+        students.add(ninaF);
+        students.add(tomH);
+        students.add(EgonW);
+
+        Course deutschUnterricht = new Course("7g", "Deutsch", frauLoch, students);
+
+        System.out.println("Ninas Adresse: " + ninaF.getAddress());
+        ninaF.setAddress("Hegelstr. 21");
+        System.out.println("Ninas Adresse nach set: " + ninaF.getAddress());
+        System.out.println("Is Nina's grade the same as Egon's? " + ninaF.getAddress().equals(EgonW.getGrade()));
+        System.out.println("Was ist Ellas Passwort? Es lautet: " + ellaI.hashCode());
+        System.out.println("Ich brauche alle Infos über Herr Kerwer, die wir haben! Na logo: " + herrKerwer.toString());
+
+
+
 
     }
 }
