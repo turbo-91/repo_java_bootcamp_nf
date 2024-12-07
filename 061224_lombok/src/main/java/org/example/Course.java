@@ -5,7 +5,7 @@ import lombok.*;
 import java.util.List;
 import java.util.UUID;
 
-
+@Data
 @Builder
 @Value
 public class Course {
