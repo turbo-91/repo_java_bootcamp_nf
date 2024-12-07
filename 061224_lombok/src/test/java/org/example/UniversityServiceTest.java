@@ -25,9 +25,27 @@ public class UniversityServiceTest {
             .subject("Deutsch")
             .build();
 
+    List<Course> udkCourses = List.of(
+            Course.builder().id("5676").name("Bildhauerische Grundlagen").teacher(frauLoch).students(students).build(),
+            Course.builder().id("9234").name("Malerei").teacher(frauLoch).students(students).build());
+
 
     @Test
-    public void deutschUnterrichtShouldReturn4(){
+    public void udkBerlinShouldReturn3point5(){
+        // GIVEN
+        University udkBerlin = new University("123", "Universität der Künste Berlin", udkCourses);
+        UniversityService universityService = new UniversityService();
+        universityService.setUniversity(udkBerlin);
+        // WHEN
+        BigDecimal actual = universityService.averageGradeUniversity(udkBerlin);
+
+        // THEN
+        BigDecimal expected = new BigDecimal(3.5);
+        Assertions.assertEquals(expected, actual);
+    };
+
+    @Test
+    public void deutschUnterrichtShouldReturn3point5(){
         // GIVEN
         Course deutschUnterricht = new Course("7g", "Deutsch", frauLoch, students);
         UniversityService universityService = new UniversityService();
@@ -40,6 +58,7 @@ public class UniversityServiceTest {
         Assertions.assertEquals(expected, actual);
 
     }
+
 
 
 }
