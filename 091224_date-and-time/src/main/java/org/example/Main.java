@@ -3,6 +3,8 @@ package org.example;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.time.MonthDay;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -31,7 +33,18 @@ public class Main {
         LocalDate endDate = LocalDate.of(2024, 12, 31);
         long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
         System.out.println("Difference in days between " + startDate + " and " + endDate + ": " + daysBetween);
+
+        // Example instance of Animal
+        Animal myAnimal = new Animal();
+        myAnimal.setName("Buddy");
+        myAnimal.setBirthday(MonthDay.of(12, 25));
+
+        // Print the result
+        System.out.println("Animal Name: " + myAnimal.getName());
+        System.out.println("Days until next birthday: " + myAnimal.daysUntilNextBirthday());
+
     }
+
 }
 
 // RESEARCH
@@ -96,3 +109,39 @@ public class Main {
 
 // This is possible because the airplane crosses time zones. For example, it could depart from a location at 13:00 (UTC+0) and arrive
 // at 17:00 (UTC+4), resulting in an 8-hour flight despite the apparent 4-hour difference in local times.
+
+
+// BONUS: Data types for time
+
+// The departure time of an airplane:
+//Data Type: ZonedDateTime
+//Justification: Includes both the time and the time zone, necessary for handling flights crossing time zones.
+//
+//The times on a bus schedule:
+//Data Type: LocalTime
+//Justification: Represents the time of day without requiring date or time zone, suitable for fixed local schedules.
+//
+//When the emergency call arrives at the central office:
+//Data Type: Instant
+//Justification: Records a precise timestamp in UTC, independent of time zones, ideal for logging events.
+//
+//When Easter takes place in the year 2022:
+//Data Type: LocalDate
+//Justification: Represents a date-only event without a specific time or time zone.
+//
+//How long a ticket with a 1-day validity lasts:
+//Data Type: Duration
+//Justification: Captures a span of time, specifically one day, which is duration-based.
+//
+//The date next to a signature (contract management software):
+//Data Type: LocalDate
+//Justification: Represents a date-only context, where time and time zones are irrelevant.
+//
+//When New Year's Eve is (on January 1st at 00:00, regardless of location):
+//Data Type: LocalDateTime
+//Justification: Represents the same date and time worldwide, without time zone considerations.
+//
+//When the video call is:
+//Data Type: ZonedDateTime
+//Justification: Accounts for participants in different time zones, requiring precise time and zone information.
+
