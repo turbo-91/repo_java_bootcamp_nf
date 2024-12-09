@@ -1,8 +1,36 @@
 package org.example;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+
+        // Step 1
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        System.out.println("Current Date and Time: " + currentDateTime);
+
+        // Step 2
+        LocalDateTime newDateTime = currentDateTime.plusWeeks(2);
+        System.out.println("Date and Time after 2 weeks: " + newDateTime);
+
+        // Step 3
+        LocalDate futureDate = LocalDate.of(2024, 12, 25);
+        LocalDate today = LocalDate.now();
+        if (today.isBefore(futureDate)) {
+            System.out.println("The current date is before " + futureDate + ", which is Christmas.");
+        } else if (today.isAfter(futureDate)) {
+            System.out.println("The current date is after " + futureDate + ", which is Christmas.");
+        } else {
+            System.out.println("The current date is the same as " + futureDate + ", which is Christmas.");
+        }
+
+        // Step 4
+        LocalDate startDate = LocalDate.of(2024, 1, 1);
+        LocalDate endDate = LocalDate.of(2024, 12, 31);
+        long daysBetween = ChronoUnit.DAYS.between(startDate, endDate);
+        System.out.println("Difference in days between " + startDate + " and " + endDate + ": " + daysBetween);
     }
 }
 
