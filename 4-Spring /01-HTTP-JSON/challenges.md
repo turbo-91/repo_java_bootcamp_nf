@@ -23,3 +23,48 @@
   - **Protocol Buffers**: A language-neutral, platform-neutral extensible mechanism for serializing structured data, developed by Google.
   - **MessagePack**: An efficient binary serialization format that enables data exchange among multiple languages.
   - **CBOR (Concise Binary Object Representation)**: A binary data serialization format designed for small code size and message size.
+ 
+  ** -------- **
+ 
+* **Coding: Rick&Morty API**
+* **get all characters**
+  - there are 826 character on 42 pages
+    
+  - these informations are present per character:
+  - ID: A unique identifier for the character.
+  - Name: The name of the character.
+  - Status: The current status of the character (e.g., "Alive," "Dead," or "unknown").
+  - Species: The species of the character (e.g., "Human," "Alien").
+  - Type: Additional details about the character's type, if applicable (e.g., "Superhuman," "Genetic experiment").
+  - Gender: The gender of the character (e.g., "Male," "Female," "unknown").
+  - Origin:
+  - Name: The name of the character's place of origin.URL: A link to the API endpoint for the character's origin location.
+  - Location:
+  - Name: The name of the character's current location.
+  - URL: A link to the API endpoint for the character's current location.
+  - Image: A URL to an image representing the character.
+  - Episode: A list of URLs to API endpoints for episodes in which the character appears.
+  - URL: The URL to the character's detailed API endpoint.
+  - Created: The timestamp indicating when this character's data was created in the database.
+    
+* **439 alive**
+  
+* **126 locations**
+  
+* **location info structure**
+*Hierarchical Structure*
+- Each location is a standalone object within the results array.
+- residents links characters to their respective locations.
+  
+*Rich Metadata*
+The type and dimension fields provide descriptive context for each location.
+
+*Interlinking*
+The API uses URLs (e.g., residents and url) to connect locations and characters, enabling a relational data model.
+
+* **51 episodes**
+  
+* **Lisas id: 204**
+
+
+
