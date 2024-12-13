@@ -14,9 +14,11 @@ import java.util.UUID;
 public class FigureService {
 
     private final FigureRepo figureRepo;
+    private final IdService idService;
 
-    public FigureService(FigureRepo figureRepo) {
+    public FigureService(FigureRepo figureRepo, IdService idService) {
         this.figureRepo = figureRepo;
+        this.idService = idService;
     }
 
     public List<FigureDTO> getAllFigures() {
@@ -43,8 +45,9 @@ public class FigureService {
     }
 
     public Figure createFigure(FigureDTO figureDTO) {
+        String id = idService.generateId();
         Figure figureToSave = new Figure(
-                UUID.randomUUID().toString(),
+                id,
                 figureDTO.name(),
                 figureDTO.age(),
                 figureDTO.job());

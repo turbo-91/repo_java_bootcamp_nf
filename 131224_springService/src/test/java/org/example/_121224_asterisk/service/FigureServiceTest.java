@@ -15,11 +15,12 @@ import static org.mockito.Mockito.*;
 class FigureServiceTest {
 
     private final FigureRepo figureRepo = mock(FigureRepo.class); // mocking the repo, as we're not testing it, we're testing FigureService
+    private final IdService idService= mock(IdService.class); // mocking idService
 
     @Test
     void getAllFigures_shouldReturnEmptyList_whenCalledInitially() {
         //GIVEN
-        FigureService figureService = new FigureService(figureRepo); // empty by default
+        FigureService figureService = new FigureService(figureRepo, idService); // empty by default
 
         List<FigureDTO> expected = Collections.emptyList();
         //WHEN
@@ -32,7 +33,7 @@ class FigureServiceTest {
     void getById_shouldReturnAsterix_whenCalledWithValidId() {
         //GIVEN
         Figure figure = new Figure("1", "Asterix", 35, "Krieger");
-        FigureService figureService = new FigureService(figureRepo); // the mocked repo again where we will "find" our figure
+        FigureService figureService = new FigureService(figureRepo, idService); // the mocked repo again where we will "find" our figure
         when(figureRepo.findById(figure.id())).thenReturn(Optional.of(figure)); // mocking that the figure is being found from the repo
 
         FigureDTO expected = new FigureDTO(figure.id(), figure.name(), figure.age(), figure.job());
@@ -46,7 +47,7 @@ class FigureServiceTest {
     void updateFigure_shouldReturnUpdatedAsterix_whenCalledWithValidData() {
         // GIVEN
         Figure figure = new Figure("1", "Asterix", 35, "Krieger");
-        FigureService figureService = new FigureService(figureRepo); // siehe oben
+        FigureService figureService = new FigureService(figureRepo, idService); // siehe oben
         when(figureRepo.existsById(figure.id())).thenReturn(true); // mocking the fulfilled if-condition
         when(figureRepo.findById(figure.id())).thenReturn(Optional.of(figure)); // mocking that statement of condition returns optional of figure
 
@@ -71,7 +72,7 @@ class FigureServiceTest {
             // GIVEN
             Figure figure = new Figure("1", "Asterix", 35, "Krieger");
             when(figureRepo.existsById(figure.id())).thenReturn(true);
-            FigureService figureService = new FigureService(figureRepo);
+            FigureService figureService = new FigureService(figureRepo, idService);
 
             // WHEN
             figureService.deleteFigure(figure.id());
