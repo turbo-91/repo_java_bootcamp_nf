@@ -23,15 +23,17 @@ public class FigureController {
 
     @GetMapping("/{id}")
     public FigureDTO getById(@PathVariable String id) {
+
         return figureService.getById(id);
     }
 
-    public FigureDTO createFigure(@RequestBody FigureDTO figureDTO) {
+    @PostMapping
+    public Figure createFigure(@RequestBody FigureDTO figureDTO) {
         return figureService.createFigure(figureDTO);
     }
 
     @PutMapping("/{id}")
-    public FigureDTO updateFigure(@RequestBody Figure figure, @PathVariable String id) {
+    public Figure updateFigure(@RequestBody Figure figure, @PathVariable String id) {
         return figureService.updateFigure(figure, id);
     }
 

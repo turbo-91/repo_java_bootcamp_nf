@@ -20,7 +20,6 @@ public class FigureService {
         return figureRepo.findAll().stream()
                 .map(figure -> {
                     FigureDTO figureDTO = new FigureDTO(
-                            figure.id(),
                             figure.name(),
                             figure.age(),
                             figure.job());
@@ -32,30 +31,28 @@ public class FigureService {
     public FigureDTO getById(String id) {
         Figure temp = figureRepo.findById(id).orElseThrow();
         FigureDTO figureDTO = new FigureDTO(
-                temp.id(),
                 temp.name(),
                 temp.age(),
                 temp.job());
         return figureDTO;
     }
 
-    public FigureDTO createFigure(FigureDTO figureDTO) {
-        String id = UUID.randomUUID().toString();
-        Figure toSave = new Figure(id, figureDTO.name(), figureDTO.age(), figureDTO.job());
-        Figure saved = figureRepo.save(toSave);
-        return new FigureDTO(saved.id(), saved.name(), saved.age(), saved.job());
+    public Figure createFigure(FigureDTO figureDTO) {
+        Figure figureToSave = new Figure(
+                UUID.randomUUID().toString(),
+                figureDTO.name(),
+                figureDTO.age(),
+                figureDTO.job());
+        return figureRepo.save(figureToSave);
     }
 
-    public FigureDTO updateFigure(Figure figure, String id) {
-        Figure existing = figureRepo.findById(id).orElseThrow();
-        Figure updated = new Figure(
-                id,
-                figure.name(),
-                figure.age(),
-                figure.job()
-        );
-        Figure saved = figureRepo.save(updated);
-        return new FigureDTO(saved.id(), saved.name(), saved.age(), saved.job());
+    public Figure updateFigure(Figure figure, String id) {
+        if (figureRepo.existsById(id)) {
+            figureRepo.save(figure);
+            return figureRepo.findById(id).orElseThrow();
+        }else {
+            throw new RuntimeException("Character not found");
+        }
     }
 
     public void deleteFigure(String id) {
