@@ -1,4 +1,4 @@
-package org.example._131224_spring;
+package org.example._121224_asterisk;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
