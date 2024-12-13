@@ -27,7 +27,6 @@ public class FigureController {
 
     @GetMapping("/{id}")
     public FigureDTO getById(@PathVariable String id) {
-
         return figureService.getById(id);
     }
 
