@@ -10,8 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 class FigureServiceTest {
 
@@ -44,7 +43,27 @@ class FigureServiceTest {
     }
 
     @Test
-    void updateFigure() {
+    void updateFigure_shouldReturnUpdatedAsterix_whenCalledWithValidData() {
+        // GIVEN
+        Figure figure = new Figure("1", "Asterix", 35, "Krieger");
+        FigureService figureService = new FigureService(figureRepo); // siehe oben
+        when(figureRepo.existsById(figure.id())).thenReturn(true); // mocking the fulfilled if-condition
+        when(figureRepo.findById(figure.id())).thenReturn(Optional.of(figure)); // mocking that statement of condition returns optional of figure
+
+        Figure expected = new Figure(
+                figure.id(),
+                figure.name(),
+                figure.age(),
+                figure.job());
+
+        // WHEN
+        Figure actual = figureService.updateFigure(figure, figure.id());
+
+        //THEN
+        assertEquals(expected, actual);
+        verify(figureRepo).save(figure); // verifying if figureRepo.save(figure) is called once in updateFigure
+                                         // which is sufficient as we do not need to check if figureRepo.save works
+                                         // -> that's a test for the figureRepo tests
     }
 
     @Test
