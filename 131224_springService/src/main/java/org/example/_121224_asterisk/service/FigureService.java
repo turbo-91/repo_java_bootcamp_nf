@@ -14,9 +14,11 @@ import java.util.UUID;
 public class FigureService {
 
     private final FigureRepo figureRepo;
+    private final IdService idService;
 
-    public FigureService(FigureRepo figureRepo) {
+    public FigureService(FigureRepo figureRepo, IdService idService) {
         this.figureRepo = figureRepo;
+        this.idService = idService;
     }
 
     public List<FigureDTO> getAllFigures() {
@@ -42,13 +44,15 @@ public class FigureService {
         return figureDTO;
     }
 
-    public Figure createFigure(FigureDTO figureDTO) {
-        Figure figureToSave = new Figure(
-                UUID.randomUUID().toString(),
-                figureDTO.name(),
-                figureDTO.age(),
-                figureDTO.job());
-        return figureRepo.save(figureToSave);
+    public FigureDTO createFigure(Figure figure) {
+        Figure figureToSave = figureRepo.save(figure);
+        String id = idService.generateId();
+        FigureDTO figureDTO = new FigureDTO(
+                idService.generateId(),
+                figureToSave.name(),
+                figureToSave.age(),
+                figureToSave.job());
+        return figureDTO;
     }
 
     public Figure updateFigure(Figure figure, String id) {
