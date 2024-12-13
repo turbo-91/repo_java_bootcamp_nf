@@ -1,66 +1,42 @@
 package org.example._121224_asterisk.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.example._121224_asterisk.model.Figure;
+import org.example._121224_asterisk.model.FigureDTO;
 import org.example._121224_asterisk.repo.FigureRepo;
+import org.example._121224_asterisk.service.FigureService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/asterix")
+@RequiredArgsConstructor
 public class FigureController {
 
-    private final FigureRepo figureRepo;
-
-    public FigureController(FigureRepo figureRepo) {
-        this.figureRepo = figureRepo;
-    }
+    private final FigureService figureService;
 
     @GetMapping("/characters")
-    public List<Figure> characters() {
-        return figureRepo.findAll();
+    public List<FigureDTO> getAll() {
+        return figureService.getAllFigures();
     }
 
-    @GetMapping("{id}")
-    public Figure getFigureById(@PathVariable String id) {
-        return figureRepo.findById(id).orElseThrow();
+    @GetMapping("/{id}")
+    public FigureDTO getById(@PathVariable String id) {
+        return figureService.getById(id);
     }
 
-    @PostMapping
-    public Figure addFigure(@RequestBody Figure figure) {
-        return figureRepo.save(figure);
+    public FigureDTO createFigure(@RequestBody FigureDTO figureDTO) {
+        return figureService.createFigure(figureDTO);
     }
 
-    @PutMapping("{id}")
-    public Figure updateFigure(@PathVariable String id, @RequestBody Figure figure) {
-        Figure updateFigure = figureRepo.findById(id).orElseThrow();
-        updateFigure = updateFigure.withId(figure.id());
-        updateFigure = updateFigure.withName(figure.name());
-        updateFigure = updateFigure.withAge(figure.age());
-        updateFigure = updateFigure.withJob(figure.job());
-
-        return updateFigure;
+    @PutMapping("/{id}")
+    public FigureDTO updateFigure(@RequestBody Figure figure, @PathVariable String id) {
+        return figureService.updateFigure(figure, id);
     }
 
-    @DeleteMapping
-    public String deleteFigure(@RequestBody Figure Figure) {
-        figureRepo.delete(Figure);
-        return "Successfully deleted";
+    @DeleteMapping("/{id}")
+    public void deleteFigure(@PathVariable String id) {
+        figureService.deleteFigure(id);
     }
-
-//    @GetMapping("/characters")
-//    public List<Figure> getAllCharacters() {
-//        return List.of(
-//                new Figure("1", "Asterix", 35, "Krieger"),
-//                new Figure("2", "Obelix", 35, "Lieferant"),
-//                new Figure("3", "Miraculix", 60, "Druide"),
-//                new Figure("4", "Majestix", 60, "Häuptling"),
-//                new Figure("5", "Troubadix", 25, "Barden"),
-//                new Figure("6", "Gutemine", 35, "Häuptlingsfrau"),
-//                new Figure("7", "Idefix", 5, "Hund"),
-//                new Figure("8", "Geriatrix", 70, "Rentner"),
-//                new Figure("9", "Automatix", 35, "Schmied"),
-//                new Figure("10", "Grockelix", 35, "Fischer")
-//        );
-//    }
 }

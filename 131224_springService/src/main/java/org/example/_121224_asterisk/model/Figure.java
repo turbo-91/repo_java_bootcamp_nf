@@ -19,4 +19,6 @@ public record Figure(String id, String name, int age, String job) {
     public Figure withJob(String job) {
         return new Figure(id, name, age, job);
     }
+
+
 }
