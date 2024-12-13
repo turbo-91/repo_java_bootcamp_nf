@@ -66,7 +66,19 @@ class FigureServiceTest {
                                          // -> that's a test for the figureRepo tests
     }
 
-    @Test
-    void deleteFigure() {
+        @Test
+        void testDeleteFigure_GivenValidId_WhenExists_ThenDeletesSuccessfully() {
+            // GIVEN
+            Figure figure = new Figure("1", "Asterix", 35, "Krieger");
+            when(figureRepo.existsById(figure.id())).thenReturn(true);
+            FigureService figureService = new FigureService(figureRepo);
+
+            // WHEN
+            figureService.deleteFigure(figure.id());
+
+            // THEN
+            verify(figureRepo).deleteById(figure.id()); // verify deleteById was called once
+        }
+
     }
-}
+
