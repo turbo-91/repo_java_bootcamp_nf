@@ -1,5 +1,6 @@
 package org.example._121224_asterisk.controller;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.example._121224_asterisk.model.Figure;
 import org.example._121224_asterisk.model.FigureDTO;
@@ -11,10 +12,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/asterix")
-@RequiredArgsConstructor
 public class FigureController {
 
     private final FigureService figureService;
+
+    public FigureController(FigureService figureService) {
+        this.figureService = figureService;
+    }
 
     @GetMapping("/characters")
     public List<FigureDTO> getAll() {
@@ -23,7 +27,6 @@ public class FigureController {
 
     @GetMapping("/{id}")
     public FigureDTO getById(@PathVariable String id) {
-
         return figureService.getById(id);
     }
 

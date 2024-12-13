@@ -11,15 +11,19 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class FigureService {
 
     private final FigureRepo figureRepo;
+
+    public FigureService(FigureRepo figureRepo) {
+        this.figureRepo = figureRepo;
+    }
 
     public List<FigureDTO> getAllFigures() {
         return figureRepo.findAll().stream()
                 .map(figure -> {
                     FigureDTO figureDTO = new FigureDTO(
+                            figure.id(),
                             figure.name(),
                             figure.age(),
                             figure.job());
@@ -31,6 +35,7 @@ public class FigureService {
     public FigureDTO getById(String id) {
         Figure temp = figureRepo.findById(id).orElseThrow();
         FigureDTO figureDTO = new FigureDTO(
+                temp.id(),
                 temp.name(),
                 temp.age(),
                 temp.job());
