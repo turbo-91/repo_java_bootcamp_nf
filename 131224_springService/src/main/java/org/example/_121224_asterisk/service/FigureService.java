@@ -11,10 +11,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-@RequiredArgsConstructor
 public class FigureService {
 
     private final FigureRepo figureRepo;
+
+    public FigureService(FigureRepo figureRepo) {
+        this.figureRepo = figureRepo;
+    }
 
     public List<FigureDTO> getAllFigures() {
         return figureRepo.findAll().stream()
