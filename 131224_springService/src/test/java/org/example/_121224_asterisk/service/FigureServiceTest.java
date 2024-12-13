@@ -44,6 +44,26 @@ class FigureServiceTest {
     }
 
     @Test
+    void createFigure_shouldReturnCreatedFigure_whenCalledWithValidData() {
+        //GIVEN
+        FigureService figureService = new FigureService(figureRepo, idService);
+        Figure figure = new Figure("1", "Asterix", 35, "Krieger");
+        when(idService.generateId()).thenReturn("1"); // mocking that the idService returns our id
+        when(figureRepo.save(figure)).thenReturn(figure); // mocking that the figureRepo saves succesfully and then returns figure
+                                                          // which is sufficient as we do not need to check if figureRepo.save works
+                                                          // -> that's a test for the figureRepo tests
+
+        FigureDTO expected = new FigureDTO("1", figure.name(), figure.age(), figure.job());
+
+        //WHEN
+        FigureDTO actual = figureService.createFigure(figure);
+
+        //THEN
+        assertEquals(expected, actual);
+        verify(figureRepo).save(figure); // additionally verifying that save has not only been mocked (above) but also called once
+    }
+
+    @Test
     void updateFigure_shouldReturnUpdatedAsterix_whenCalledWithValidData() {
         // GIVEN
         Figure figure = new Figure("1", "Asterix", 35, "Krieger");
@@ -67,18 +87,18 @@ class FigureServiceTest {
                                          // -> that's a test for the figureRepo tests
     }
 
-        @Test
-        void testDeleteFigure_GivenValidId_WhenExists_ThenDeletesSuccessfully() {
-            // GIVEN
-            Figure figure = new Figure("1", "Asterix", 35, "Krieger");
-            when(figureRepo.existsById(figure.id())).thenReturn(true);
-            FigureService figureService = new FigureService(figureRepo, idService);
+    @Test
+    void testDeleteFigure_GivenValidId_WhenExists_ThenDeletesSuccessfully() {
+        // GIVEN
+        Figure figure = new Figure("1", "Asterix", 35, "Krieger");
+        when(figureRepo.existsById(figure.id())).thenReturn(true);
+        FigureService figureService = new FigureService(figureRepo, idService);
 
-            // WHEN
-            figureService.deleteFigure(figure.id());
+        // WHEN
+        figureService.deleteFigure(figure.id());
 
-            // THEN
-            verify(figureRepo).deleteById(figure.id()); // verify deleteById was called once
+        // THEN
+        verify(figureRepo).deleteById(figure.id()); // verify deleteById was called once
         }
 
     }

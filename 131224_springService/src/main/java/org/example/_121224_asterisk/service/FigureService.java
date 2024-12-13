@@ -44,14 +44,15 @@ public class FigureService {
         return figureDTO;
     }
 
-    public Figure createFigure(FigureDTO figureDTO) {
+    public FigureDTO createFigure(Figure figure) {
+        Figure figureToSave = figureRepo.save(figure);
         String id = idService.generateId();
-        Figure figureToSave = new Figure(
-                id,
-                figureDTO.name(),
-                figureDTO.age(),
-                figureDTO.job());
-        return figureRepo.save(figureToSave);
+        FigureDTO figureDTO = new FigureDTO(
+                idService.generateId(),
+                figureToSave.name(),
+                figureToSave.age(),
+                figureToSave.job());
+        return figureDTO;
     }
 
     public Figure updateFigure(Figure figure, String id) {

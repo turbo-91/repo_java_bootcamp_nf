@@ -31,8 +31,8 @@ public class FigureController {
     }
 
     @PostMapping
-    public Figure createFigure(@RequestBody FigureDTO figureDTO) {
-        return figureService.createFigure(figureDTO);
+    public FigureDTO createFigure(@RequestBody Figure figure) {
+        return figureService.createFigure(figure);
     }
 
     @PutMapping("/{id}")
