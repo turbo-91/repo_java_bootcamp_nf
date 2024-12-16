@@ -36,7 +36,7 @@ class FigureServiceTest {
         FigureService figureService = new FigureService(figureRepo, idService); // the mocked repo again where we will "find" our figure
         when(figureRepo.findById(figure.id())).thenReturn(Optional.of(figure)); // mocking that the figure is being found from the repo
 
-        FigureDTO expected = new FigureDTO(figure.id(), figure.name(), figure.age(), figure.job());
+        FigureDTO expected = new FigureDTO(figure.id(), figure.name(), figure.age(), figure.occupation());
         //WHEN
         FigureDTO actual = figureService.getById(figure.id());
         //THEN
@@ -53,7 +53,7 @@ class FigureServiceTest {
                                                           // which is sufficient as we do not need to check if figureRepo.save works
                                                           // -> that's a test for the figureRepo tests
 
-        FigureDTO expected = new FigureDTO("1", figure.name(), figure.age(), figure.job());
+        FigureDTO expected = new FigureDTO("1", figure.name(), figure.age(), figure.occupation());
 
         //WHEN
         FigureDTO actual = figureService.createFigure(figure);
@@ -75,7 +75,7 @@ class FigureServiceTest {
                 figure.id(),
                 figure.name(),
                 figure.age(),
-                figure.job());
+                figure.occupation());
 
         // WHEN
         Figure actual = figureService.updateFigure(figure, figure.id());
