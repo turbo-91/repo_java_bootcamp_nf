@@ -28,7 +28,7 @@ public class FigureService {
                             figure.id(),
                             figure.name(),
                             figure.age(),
-                            figure.job());
+                            figure.occupation());
                     return figureDTO;
                 })
                 .toList();
@@ -40,7 +40,7 @@ public class FigureService {
                 temp.id(),
                 temp.name(),
                 temp.age(),
-                temp.job());
+                temp.occupation());
         return figureDTO;
     }
 
@@ -51,7 +51,7 @@ public class FigureService {
                 idService.generateId(),
                 figureToSave.name(),
                 figureToSave.age(),
-                figureToSave.job());
+                figureToSave.occupation());
         return figureDTO;
     }
 
