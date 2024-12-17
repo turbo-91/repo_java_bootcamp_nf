@@ -28,4 +28,10 @@ public class RAndMController {
     public RickAndMortyChar getCharById(@PathVariable int id){
         return service.getCharacterById(id);
     }
+
+    @GetMapping("/alive")
+    public List<RickAndMortyChar> getAliveCharacters(){
+        return service.getAliveCharacters();
+    }
+
 }

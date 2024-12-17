@@ -11,6 +11,7 @@ import java.util.List;
 public class RAndMService {
 
     private final RestClient restClient;
+
     public RAndMService(RestClient.Builder restClientBuilder) {
         this.restClient = restClientBuilder.baseUrl("https://rickandmortyapi.com/api/character").build();
     }
@@ -31,6 +32,15 @@ public class RAndMService {
                 .retrieve() // "Drücke" auf Senden und warte auf Antwort!
                 .body(RickAndMortyChar.class); //Wandelt Response in angegebenes Objekt um
 
+    }
+
+    public List<RickAndMortyChar> getAliveCharacters() {
+        return restClient
+                .get() //-> REST Methode
+                .uri("?status=alive") // Append the query parameter dynamically
+                .retrieve() // "Drücke" auf Senden und warte auf Antwort!
+                .body(RickAndMortyResponse.class) //Wandelt Response in angegebenes Objekt um
+                .results();
     }
 
 }
