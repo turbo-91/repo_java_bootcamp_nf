@@ -2,15 +2,12 @@ package org.example._161224_rest.controller;
 
 import org.example._161224_rest.model.RickAndMortyChar;
 import org.example._161224_rest.service.RAndMService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/characters")
+@RequestMapping("/api")
 public class RAndMController {
 
     private final RAndMService service;
@@ -19,19 +16,24 @@ public class RAndMController {
         this.service = service;
     }
 
-    @GetMapping
+    @GetMapping("/characters")
     public List<RickAndMortyChar> getAllChars(){
         return service.getCharacters();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/characters/{id}")
     public RickAndMortyChar getCharById(@PathVariable int id){
         return service.getCharacterById(id);
     }
 
-    @GetMapping("/alive")
+    @GetMapping("/characters/alive")
     public List<RickAndMortyChar> getAliveCharacters(){
         return service.getAliveCharacters();
+    }
+
+    @GetMapping("/species-statistic")
+    public int getCharacterCountBySpecies(@RequestParam String species) {
+        return service.getCharacterCountBySpecies(species);
     }
 
 }
