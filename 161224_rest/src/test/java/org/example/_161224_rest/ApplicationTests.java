@@ -1,4 +1,4 @@
-package org.example._161224_restclient;
+package org.example._161224_rest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
