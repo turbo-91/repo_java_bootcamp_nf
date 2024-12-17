@@ -2,7 +2,6 @@ package org.example._161224_rest.service;
 
 import org.example._161224_rest.model.RickAndMortyChar;
 import org.example._161224_rest.model.RickAndMortyResponse;
-import org.example._161224_rest.model.SpeciesResponse;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
@@ -44,14 +43,17 @@ public class RAndMService {
                 .results();
     }
 
-    public int getCharacterCountBySpecies(String species) {
+    public int getAliveCharacterCountBySpecies(String species) {
         return restClient
                 .get()
-                .uri(uriBuilder -> uriBuilder.queryParam("species", species).build()) // Dynamically append the species parameter
+                .uri(uriBuilder -> uriBuilder
+                        .queryParam("species", species)  // Append species dynamically
+                        .queryParam("status", "alive")   // Append status dynamically
+                        .build())
                 .retrieve()
-                .body(SpeciesResponse.class) // Map the response
-                .info()
-                .count(); // Extract the count
+                .body(RickAndMortyResponse.class) // Map the response
+                .results()                        // Get the list of characters
+                .size();                          // Count the number of results
     }
 
 }

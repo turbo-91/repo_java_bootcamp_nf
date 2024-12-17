@@ -32,8 +32,8 @@ public class RAndMController {
     }
 
     @GetMapping("/species-statistic")
-    public int getCharacterCountBySpecies(@RequestParam String species) {
-        return service.getCharacterCountBySpecies(species);
+    public int getAliveCharacterCountBySpecies(@RequestParam String species) {
+        return service.getAliveCharacterCountBySpecies(species);
     }
 
 }
