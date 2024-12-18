@@ -163,4 +163,52 @@ class RAndMControllerTest {
                                 """
                 ));
     }
+
+    @Test
+    void getAliveCharacterCountBySpecies() throws Exception {
+
+        String species = "Human";
+
+        mockRestServiceServer.expect(requestTo("https://rickandmortyapi.com/api/character?species=Human&status=alive"))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withSuccess(
+                        """
+                                {
+                                    "info": {
+                                        "count": 3,
+                                        "pages": 1,
+                                        "next": null,
+                                        "prev": null
+                                    },
+                                    "results": [
+                                        {
+                                            "id": 1,
+                                            "name": "Rick Sanchez",
+                                            "status": "Alive",
+                                            "species": "Human"
+                                        },
+                                        {
+                                            "id": 2,
+                                            "name": "Morty Smith",
+                                            "status": "Alive",
+                                            "species": "Human"
+                                        },
+                                        {
+                                            "id": 3,
+                                            "name": "Summer Smith",
+                                            "status": "Alive",
+                                            "species": "Human"
+                                        }
+                                    ]
+                                }
+                                """, MediaType.APPLICATION_JSON
+                ));
+
+        mockMvc.perform(get("/api/species-statistic").param("species", species))
+                .andExpect(status().isOk())
+                .andExpect(content().string("3")); // Expect the count as a plain string
+    }
+
+
+
 }
