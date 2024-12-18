@@ -17,12 +17,12 @@ public class RAndMController {
     }
 
     @GetMapping("/characters")
-    public List<RickAndMortyChar> getAllChars(){
+    public List<RickAndMortyChar> getAllCharacters(){
         return service.getCharacters();
     }
 
     @GetMapping("/characters/{id}")
-    public RickAndMortyChar getCharById(@PathVariable int id){
+    public RickAndMortyChar getCharacterById(@PathVariable int id){
         return service.getCharacterById(id);
     }
 
