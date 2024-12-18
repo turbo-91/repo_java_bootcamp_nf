@@ -17,7 +17,7 @@ public class RAndMController {
     }
 
     @GetMapping("/characters")
-    public List<RickAndMortyChar> getAllChars(){
+    public List<RickAndMortyChar> getAllCharacters(){
         return service.getCharacters();
     }
 
