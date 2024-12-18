@@ -114,7 +114,53 @@ class RAndMControllerTest {
                 ));
     }
 
+    @Test
+    void getAliveCharacters() throws Exception {
 
+        mockRestServiceServer.expect(requestTo("https://rickandmortyapi.com/api/character?status=alive"))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withSuccess(
+                        """
+                                {
+                                    "info": {
+                                        "count": 5,
+                                        "pages": 1,
+                                        "next": null,
+                                        "prev": null
+                                    },
+                                    "results": [
+                                        {
+                                            "id": 1,
+                                            "name": "Rick Sanchez",
+                                            "status": "Alive"
+                                        },
+                                        {
+                                            "id": 2,
+                                            "name": "Morty Smith",
+                                            "status": "Alive"
+                                        }
+                                    ]
+                                }
+                                """, MediaType.APPLICATION_JSON
+                ));
 
-
+        mockMvc.perform(get("/api/characters/alive"))
+                .andExpect(status().isOk())
+                .andExpect(content().json(
+                        """
+                                [
+                                    {
+                                        "id": 1,
+                                        "name": "Rick Sanchez",
+                                        "status": "Alive"
+                                    },
+                                    {
+                                        "id": 2,
+                                        "name": "Morty Smith",
+                                        "status": "Alive"
+                                    }
+                                ]
+                                """
+                ));
+    }
 }
