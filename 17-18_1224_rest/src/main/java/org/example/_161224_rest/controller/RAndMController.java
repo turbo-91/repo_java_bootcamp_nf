@@ -22,7 +22,7 @@ public class RAndMController {
     }
 
     @GetMapping("/characters/{id}")
-    public RickAndMortyChar getCharById(@PathVariable int id){
+    public RickAndMortyChar getCharacterById(@PathVariable int id){
         return service.getCharacterById(id);
     }
 

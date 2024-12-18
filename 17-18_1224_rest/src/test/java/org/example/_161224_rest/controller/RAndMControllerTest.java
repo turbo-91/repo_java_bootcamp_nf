@@ -69,6 +69,52 @@ class RAndMControllerTest {
                 ));
     }
 
+    @Test
+    void getCharacterById() throws Exception {
+
+        mockRestServiceServer.expect(requestTo("https://rickandmortyapi.com/api/character/24"))
+                .andExpect(method(HttpMethod.GET))
+                .andRespond(withSuccess(
+                        """
+                                {
+                                   "id": 24,
+                                   "name": "Armagheadon",
+                                   "status": "Alive",
+                                   "species": "Alien",
+                                   "type": "Cromulon",
+                                   "gender": "Male",
+                                   "origin": {
+                                     "name": "Signus 5 Expanse",
+                                     "url": "https://rickandmortyapi.com/api/location/22"
+                                   },
+                                   "location": {
+                                     "name": "Signus 5 Expanse",
+                                     "url": "https://rickandmortyapi.com/api/location/22"
+                                   },
+                                   "image": "https://rickandmortyapi.com/api/character/avatar/24.jpeg",
+                                   "episode": [
+                                     "https://rickandmortyapi.com/api/episode/16"
+                                   ],
+                                   "url": "https://rickandmortyapi.com/api/character/24",
+                                   "created": "2017-11-05T08:48:30.776Z"
+                                 }
+                                """, MediaType.APPLICATION_JSON
+                ));
+
+        mockMvc.perform(get("/api/characters/24")) // Use the correct endpoint here
+                .andExpect(status().isOk())
+                .andExpect(content().json(
+                        """
+                                {
+                                   "id": 24,
+                                   "name": "Armagheadon",
+                                   "status": "Alive"
+                                }
+                                """
+                ));
+    }
+
+
 
 
 }
