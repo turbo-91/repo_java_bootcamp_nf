@@ -19,7 +19,7 @@ public class MenuService {
         this.idService = idService;
     }
 
-    public List<Menu> getAllToDos() {
+    public List<Menu> getAllMenus() {
         return menuRepo.findAll();
     }
 
