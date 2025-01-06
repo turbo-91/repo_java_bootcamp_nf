@@ -113,4 +113,42 @@ class MenuServiceTest {
         verify(menuRepo).save(any(Menu.class)); // Verify save was called once
     }
 
+    // updateMenu tests
+
+    @Test
+    void updateMenu_shouldReturnUpdatedMenu_whenCalledWithValidData() throws IdNotFoundException {
+        //GIVEN
+        MenuService menuService = new MenuService(menuRepo, idService);
+
+        // Existing ToDo to update
+        Menu existingMenu = new Menu("1", "Deluxe", BigDecimal.ONE, "Ceviche", "Plantains", "Beer");
+        Menu updatedMenu = new Menu("1", "Deluxe", BigDecimal.ONE, "Ceviche", "Fried Plantains", "Beer");
+
+        // Mock the repository behavior
+        when(menuRepo.existsById("1")).thenReturn(true);
+        when(menuRepo.save(updatedMenu)).thenReturn(updatedMenu);
+
+        //WHEN
+        Menu actual = menuService.updateMenu(updatedMenu);
+
+        //THEN
+        assertEquals(updatedMenu, actual); // Ensure the returned ToDo matches the updated one
+        verify(menuRepo).existsById("1"); // Verify ID existence check
+        verify(menuRepo).save(updatedMenu); // Verify save was called with the updated ToDo
+    }
+
+    @Test
+    void updateMenu_ShouldThrowIdNotFoundException_whenMenuDoesNotExist() {
+        // GIVEN
+        Menu updatedMenu = new Menu("999", "Nonexistent ToDo", BigDecimal.TEN, "", "", "");
+        MenuService menuService = new MenuService(menuRepo, idService);
+
+        when(menuRepo.existsById("999")).thenReturn(false); // Mock repo indicates the ToDo doesn't exist
+
+        // WHEN & THEN
+        assertThrows(IdNotFoundException.class, () -> menuService.updateMenu(updatedMenu));
+        verify(menuRepo).existsById("999"); // Verify existence check was called
+        verify(menuRepo, never()).save(any()); // Ensure save was never called
+    }
+
 }

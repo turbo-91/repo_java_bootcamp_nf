@@ -44,4 +44,12 @@ public class MenuService {
         return menuRepo.save(menu);
     }
 
+    public Menu updateMenu(Menu updatedMenu) throws IdNotFoundException {
+        if (menuRepo.existsById(updatedMenu.id())){
+            return menuRepo.save(updatedMenu);
+        }else {
+            throw new IdNotFoundException("No menu found with ID: " + updatedMenu.id());
+        }
+    }
+
 }
