@@ -1,5 +1,6 @@
 package org.example._060125_burgermenu.service;
 
+import org.example._060125_burgermenu.exception.IdNotFoundException;
 import org.example._060125_burgermenu.model.Menu;
 import org.example._060125_burgermenu.repo.MenuRepo;
 import org.springframework.stereotype.Service;
@@ -19,8 +20,15 @@ public class MenuService {
         this.idService = idService;
     }
 
+    // CRUD methods
+
     public List<Menu> getAllMenus() {
         return menuRepo.findAll();
+    }
+
+    public Menu getMenuById(String id) throws IdNotFoundException {
+        return menuRepo.findById(id)
+                .orElseThrow(() -> new IdNotFoundException("No Menu found with ID: " + id));
     }
 
 }
