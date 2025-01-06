@@ -52,4 +52,14 @@ public class MenuService {
         }
     }
 
+    public Menu deleteMenu(String id) throws IdNotFoundException {
+        if (menuRepo.existsById(id)){
+            Menu deletedTodo = menuRepo.findById(id).orElseThrow();
+            menuRepo.deleteById(id);
+            return deletedTodo;
+        }else {
+            throw new IdNotFoundException("No menu found with ID: " + id);
+        }
+    }
+
 }

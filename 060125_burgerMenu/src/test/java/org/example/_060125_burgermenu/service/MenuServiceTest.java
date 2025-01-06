@@ -151,4 +151,43 @@ class MenuServiceTest {
         verify(menuRepo, never()).save(any()); // Ensure save was never called
     }
 
+    // deleteMenuById tests
+
+    @Test
+    void deleteMenu_shouldReturnDeletedMenu_whenCalledWithValidId() throws IdNotFoundException {
+        //GIVEN
+        MenuService toDoService = new MenuService(menuRepo, idService);
+
+        // Existing Menu to delete
+        Menu existingMenu = new Menu("1", "Deluxe", BigDecimal.ONE, "Ceviche", "Fried Plantains", "Beer");
+
+        // Mock the repository behavior
+        when(menuRepo.existsById("1")).thenReturn(true);
+        when(menuRepo.findById("1")).thenReturn(Optional.of(existingMenu));
+
+        //WHEN
+        Menu actual = toDoService.deleteMenu("1");
+
+        //THEN
+        assertEquals(existingMenu, actual); // Ensure the returned Menu matches the deleted one
+        verify(menuRepo).existsById("1"); // Verify ID existence check
+        verify(menuRepo).findById("1"); // Verify findById was called
+        verify(menuRepo).deleteById("1"); // Verify deleteById was called
+    }
+
+    @Test
+    void deleteMenu_ShouldThrowIdNotFoundException_whenMenuDoesNotExist() {
+        // GIVEN
+        String invalidId = "999";
+        MenuService menuService = new MenuService(menuRepo, idService);
+
+        when(menuRepo.existsById(invalidId)).thenReturn(false); // Mock repo indicates the ToDo doesn't exist
+
+        // WHEN & THEN
+        assertThrows(IdNotFoundException.class, () -> menuService.deleteMenu(invalidId));
+        verify(menuRepo).existsById(invalidId); // Verify existence check was called
+        verify(menuRepo, never()).deleteById(any()); // Ensure deleteById was never called
+    }
+
+
 }
