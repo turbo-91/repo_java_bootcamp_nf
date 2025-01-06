@@ -2,6 +2,7 @@ package org.example._060125_burgermenu.service;
 
 import org.example._060125_burgermenu.exception.IdNotFoundException;
 import org.example._060125_burgermenu.model.Menu;
+import org.example._060125_burgermenu.model.MenuDTO;
 import org.example._060125_burgermenu.repo.MenuRepo;
 import org.junit.jupiter.api.Test;
 import org.springframework.test.annotation.DirtiesContext;
@@ -89,6 +90,27 @@ class MenuServiceTest {
         // WHEN & THEN
         assertThrows(IdNotFoundException.class, () -> toDoService.getMenuById("999"));
         verify(menuRepo).findById("999"); // Verify findById was called once
+    }
+
+    // createMenu Test
+
+    @Test
+    void createMenu_shouldReturnCreatedMenu_whenCalledWithValidData() {
+        //GIVEN
+        MenuService menuService = new MenuService(menuRepo, idService);
+        MenuDTO newMenu = new MenuDTO("Deluxe", BigDecimal.ONE, "Ceviche", "Plantains", "Beer");
+        Menu savedMenu = new Menu("1", "Deluxe", BigDecimal.ONE, "Ceviche", "Plantains", "Beer");
+        when(idService.generateId()).thenReturn("1"); // idService generates ID "1"
+        when(menuRepo.save(any(Menu.class))).thenReturn(savedMenu);
+
+        Menu expected = new Menu("1", "Deluxe", BigDecimal.ONE, "Ceviche", "Plantains", "Beer");
+
+        //WHEN
+        Menu actual = menuService.createToDo(newMenu);
+
+        //THEN
+        assertEquals(expected, actual); // Verify the returned object matches expectations
+        verify(menuRepo).save(any(Menu.class)); // Verify save was called once
     }
 
 }
