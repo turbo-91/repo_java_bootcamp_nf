@@ -3,6 +3,7 @@ import typescriptLogo from './typescript.svg'
 import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
 import {christmasTree} from "./christmasTree.ts";
+import {filterWords, multiplyNumbers, someNumbers, sumNumbers} from "./function.ts";
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -23,4 +24,11 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 `
 
 setupCounter(document.querySelector<HTMLButtonElement>('#counter')!)
-christmasTree(5);
+
+let numbers: number[] = [5, 7, 13, -4, 15];
+multiplyNumbers(numbers);
+
+let words: string[] = ["why", "don't", "you", "go", "fuck", "yourself"]
+filterWords(words);
+sumNumbers(numbers)
+someNumbers(numbers)
