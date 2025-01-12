@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import { setupCounter } from './counter.ts'
 import {christmasTree} from "./christmasTree.ts";
 import {filterWords, multiplyNumbers, someNumbers, sumNumbers} from "./function.ts";
+import {outputStudent, Student} from "./types.ts";
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -32,3 +33,31 @@ let words: string[] = ["why", "don't", "you", "go", "fuck", "yourself"]
 filterWords(words);
 sumNumbers(numbers)
 someNumbers(numbers)
+
+let antonMeier: Student = {
+    firstName: "Anton",
+    lastName: "Meier",
+    age: 16,
+    grades: [1, 4, 3, 1, 2, "A", undefined, 1, 2]
+}
+
+let bertaMueller: Student = {
+    firstName: "Berta",
+    lastName: "Müller",
+    age: 17,
+    grades: ["A", undefined, 1]
+}
+
+let caesarSchmidt: Student = {
+    firstName: "Cäsar",
+    lastName: "Schmidt",
+    age: 17,
+    grades: ["A", 1, undefined, 3, 2, 4, 5]
+}
+
+console.log("")
+outputStudent(antonMeier);
+console.log("")
+outputStudent(bertaMueller);
+console.log("")
+outputStudent(caesarSchmidt);
