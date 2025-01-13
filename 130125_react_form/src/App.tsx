@@ -4,11 +4,12 @@ import {useEffect, useState} from "react";
 import {characters} from "./Characters.ts";
 import CreateCharacter from "./components/createCharacter.tsx";
 import axios from 'axios';
+import { RickAndMortyAPIResponse, Character} from "./types/RickAndMortyTypes.ts";
 
 export default function App() {
     const [searchText, setSearchText] = useState("");
     const [characterList, setCharacterList] = useState(characters);
-    const [fetchedCharacters, setFetchedCharacters] = useState<[]>([])
+    const [fetchedCharacters, setFetchedCharacters] = useState<Character[]>([]);
     const [page, setPage] = useState(1);
 
     const filteredCharacters = characterList.filter((character) =>
@@ -17,12 +18,14 @@ export default function App() {
 
 
     function fetchData() {
-        axios.get('https://rickandmortyapi.com/api/character/?page=' + page)
-            .then(response => {
-                setFetchedCharacters(response.data.results)
-                console.log("fetchedCharacters in fetchData", fetchedCharacters)
+        axios
+            .get<RickAndMortyAPIResponse>('https://rickandmortyapi.com/api/character/?page=' + page)
+            .then((response) => {
+                const characters: Character[] = response.data.results; // Results are typed as Character[]
+                setFetchedCharacters(characters);
+                console.log('fetchedCharacters in fetchData', characters);
             })
-            .catch(error => {
+            .catch((error) => {
                 console.error('Error fetching data:', error);
             });
     }
@@ -32,7 +35,7 @@ export default function App() {
     }
 
     function decreasePage() {
-        setPage((prevPage) => Math.max(prevPage - 1, 1))
+        setPage((prevPage) => Math.max(prevPage - 1, 1)) // shouldn't get lower than 1
     }
 
     useEffect(() => {
@@ -51,7 +54,13 @@ export default function App() {
                 <p>No characters found</p>
             )}
             <div onClick={() => decreasePage()}>back</div>
-            <div onClick={() => increasePage(2)}>next</div>
+            <div onClick={() => increasePage()}>next</div>
+            <h1>Filtered Characters</h1>
+            {filteredCharacters.length > 0 ? (
+                <CharacterGallery characters={filteredCharacters}/>
+            ) : (
+                <p>No characters found</p>
+            )}
         </>
     );
 }
