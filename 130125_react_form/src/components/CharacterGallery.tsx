@@ -1,4 +1,4 @@
-import {Character} from "../types/RickAndMortyCharacter.ts";
+import {Character} from "../types/RickAndMortyTypes.ts"
 import CharacterCard from "./CharacterCard.tsx";
 import "./CharacterGallery.css";
 
